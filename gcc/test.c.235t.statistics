@@ -1,0 +1,26 @@
+30 copyrename "copies coalesced" "main" 4
+31 ccp "Statements folded" "main" 3
+31 ccp "Constants propagated" "main" 17
+31 ccp "Statements deleted" "main" 26
+35 fre "SCC iterations == 2" "main" 8
+35 fre "Eliminated" "main" 16
+36 copyprop "Constants propagated" "main" 6
+36 copyprop "Statements deleted" "main" 21
+38 cddce "Statements deleted" "main" 3
+46 release_ssa "SSA names released" "main" 53
+73 fre "SCC iterations == 2" "main" 6
+73 fre "Eliminated" "main" 6
+74 copyprop "Constants propagated" "main" 2
+74 copyprop "Statements deleted" "main" 6
+76 vrp "Number of ASSERT_EXPR expressions inserted" "main" 3
+101 pre "compute_antic iterations == 2" "main" 1
+101 pre "compute_partial_antic iterations == 2" "main" 1
+101 pre "SCC iterations == 2" "main" 4
+101 pre "insert iterations == 1" "main" 1
+133 vrp "Number of ASSERT_EXPR expressions inserted" "main" 3
+101 pre "compute_antic iterations == 1" "_GLOBAL__sub_I_00099_0_main" 1
+101 pre "compute_partial_antic iterations == 1" "_GLOBAL__sub_I_00099_0_main" 1
+101 pre "insert iterations == 1" "_GLOBAL__sub_I_00099_0_main" 1
+101 pre "compute_antic iterations == 1" "_GLOBAL__sub_D_00099_1_main" 1
+101 pre "compute_partial_antic iterations == 1" "_GLOBAL__sub_D_00099_1_main" 1
+101 pre "insert iterations == 1" "_GLOBAL__sub_D_00099_1_main" 1

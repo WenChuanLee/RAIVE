@@ -1,0 +1,202 @@
+
+;; Function _mm256_set1_pd (_mm256_set1_pd, funcdef_no=788, return=vector_type, decl_uid=6304, cgraph_uid=788)
+
+_mm256_set1_pd (double __A)
+{
+  __m256d D.6747;
+
+<bb 2>:
+  gimple_assign <constructor, D.6747_2, {__A_1(D), __A_1(D), __A_1(D), __A_1(D)}, NULL>
+  gimple_return <D.6747_2>
+
+}
+
+
+
+;; Function main (main, funcdef_no=812, return=integer_type, decl_uid=6567, cgraph_uid=812)
+
+main ()
+{
+  __m256d res;
+  __m256d c;
+  __m256d a;
+  double D.6692;
+  double D.6691;
+  vector(4) double res.1;
+  __m256d res.0;
+  _Bool __cmp.25;
+  _Bool D.6725;
+  _Bool D.6724;
+  int __rtn_v2.24;
+  int __rtn_v1.23;
+  vector(4) double a.22;
+  double __rhs_v2.20;
+  double __rhs_v1.19;
+  vector(4) double res.18;
+  double __lhs_v2.16;
+  double __lhs_v1.15;
+  _Bool __cmp.12;
+  _Bool D.6706;
+  _Bool D.6705;
+  int __rtn_v2.11;
+  int __rtn_v1.10;
+  vector(4) double c.9;
+  double __rhs_v2.7;
+  double __rhs_v1.6;
+  vector(4) double res.5;
+  double __lhs_v2.3;
+  double __lhs_v1.2;
+  vector(4) double __op0_vpatch.41;
+  double __op0_patch_neg.39;
+  double __op0_patch.38;
+  long unsigned int __op1_patch.37;
+  long unsigned int __op1_patch.35;
+  long int __exp_delta.34;
+  long unsigned int __op1_exp1.32;
+  __m256d res.30;
+  long unsigned int __op0_exp0.29;
+  vector(4) double __op1_copy.28;
+
+<bb 2>:
+  gimple_debug BIND <__A, 3.29123456791234502816223539412021636962890625e+2>
+  gimple_assign <vector_cst, a_4, { 3.29123456791234502816223539412021636962890625e+2, 3.29123456791234502816223539412021636962890625e+2, 3.29123456791234502816223539412021636962890625e+2, 3.29123456791234502816223539412021636962890625e+2 }, NULL>
+  gimple_debug BIND <a, NULL>
+  gimple_debug BIND <__A, 3.291234567912343891293858177959918975830078125e+2>
+  gimple_debug BIND <b, NULL>
+  gimple_debug BIND <__A, 9.99999982451670044181213370393379591405391693115234375e-14>
+  gimple_assign <vector_cst, c_6, { 9.99999982451670044181213370393379591405391693115234375e-14, 9.99999982451670044181213370393379591405391693115234375e-14, 9.99999982451670044181213370393379591405391693115234375e-14, 9.99999982451670044181213370393379591405391693115234375e-14 }, NULL>
+  gimple_debug BIND <c, NULL>
+  gimple_assign <vector_cst, __op1_copy.28, { 3.29123456791234502816223539412021636962890625e+2, 3.29123456791234502816223539412021636962890625e+2, 3.29123456791234502816223539412021636962890625e+2, 3.29123456791234502816223539412021636962890625e+2 }, NULL>
+  gimple_assign <vector_cst, res.0_7, { 1.136868377216160297393798828125e-13, 1.136868377216160297393798828125e-13, 1.136868377216160297393798828125e-13, 1.136868377216160297393798828125e-13 }, NULL>
+  gimple_assign <vector_cst, res.30, { 1.136868377216160297393798828125e-13, 1.136868377216160297393798828125e-13, 1.136868377216160297393798828125e-13, 1.136868377216160297393798828125e-13 }, NULL>
+  gimple_assign <mem_ref, __op0_exp0.29_9, MEM[(vector(4) double *)&res.30], NULL>
+  gimple_assign <bit_and_expr, __op0_exp0.29_10, __op0_exp0.29_9, 9218868437227405312>
+  gimple_assign <mem_ref, __op1_exp1.32_12, MEM[(vector(4) double *)&__op1_copy.28], NULL>
+  gimple_assign <bit_and_expr, __op1_exp1.32_13, __op1_exp1.32_12, 9218868437227405312>
+  gimple_assign <minus_expr, __exp_delta.34_14, __op1_exp1.32_13, __op0_exp0.29_10>
+  gimple_cond <gt_expr, __exp_delta.34_14, 216172782113783808, NULL, NULL>
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+
+<bb 3>:
+  gimple_assign <plus_expr, __op1_patch.35_15, __op1_exp1.32_13, 18208053293458915328>
+  gimple_assign <bit_and_expr, __op1_patch.35_16, __op1_patch.35_15, 9218868437227405312>
+  gimple_assign <ssa_name, __op1_patch.37, __op1_patch.35_16, NULL>
+  gimple_assign <mem_ref, __op0_patch.38_18, MEM[(double *)&__op1_patch.37], NULL>
+  gimple_assign <negate_expr, __op0_patch_neg.39_19, __op0_patch.38_18, NULL>
+  gimple_assign <constructor, __op0_vpatch.41_73, {__op0_patch_neg.39_19, __op0_patch.38_18, 0.0, 0.0}, NULL>
+  gimple_assign <ssa_name, __op0_vpatch.41_20, __op0_vpatch.41_73, NULL>
+  gimple_assign <plus_expr, res.0_21, __op0_vpatch.41_20, { 1.136868377216160297393798828125e-13, 1.136868377216160297393798828125e-13, 1.136868377216160297393798828125e-13, 1.136868377216160297393798828125e-13 }>
+
+<bb 4>:
+  # gimple_phi <res.0_1, { 1.136868377216160297393798828125e-13, 1.136868377216160297393798828125e-13, 1.136868377216160297393798828125e-13, 1.136868377216160297393798828125e-13 }(2), res.0_21(3)>
+  GIMPLE_NOP
+  gimple_assign <ssa_name, res, res.0_1, NULL>
+  gimple_assign <var_decl, res.1_22, res, NULL>
+  gimple_assign <ssa_name, res.5, res.1_22, NULL>
+  gimple_assign <mem_ref, __lhs_v1.2_24, MEM[(double *)&res.5], NULL>
+  gimple_assign <mem_ref, __lhs_v2.3_26, MEM[(double *)&res.5 + 8B], NULL>
+  gimple_assign <vector_cst, c.9, { 9.99999982451670044181213370393379591405391693115234375e-14, 9.99999982451670044181213370393379591405391693115234375e-14, 9.99999982451670044181213370393379591405391693115234375e-14, 9.99999982451670044181213370393379591405391693115234375e-14 }, NULL>
+  gimple_assign <mem_ref, __rhs_v1.6_28, MEM[(double *)&c.9], NULL>
+  gimple_assign <mem_ref, __rhs_v2.7_30, MEM[(double *)&c.9 + 8B], NULL>
+  gimple_assign <gt_expr, D.6705_31, __lhs_v1.2_24, __rhs_v1.6_28>
+  gimple_assign <nop_expr, __rtn_v1.10_32, D.6705_31, NULL>
+  gimple_assign <gt_expr, D.6706_33, __lhs_v2.3_26, __rhs_v2.7_30>
+  gimple_assign <nop_expr, __rtn_v2.11_34, D.6706_33, NULL>
+  gimple_assign <eq_expr, __cmp.12_35, __rtn_v1.10_32, __rtn_v2.11_34>
+  gimple_cond <eq_expr, __cmp.12_35, 0, NULL, NULL>
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+
+<bb 5>:
+  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+  gimple_debug BIND <D#2, &c.9>
+  gimple_debug BIND <D#1, *D#2>
+  gimple_debug BIND <c, D#1>
+
+<bb 6>:
+  # gimple_phi <__rtn_v1.10_2, __rtn_v1.10_32(4), __rtn_v1.10_36(5)>
+  gimple_cond <eq_expr, __rtn_v1.10_2, 1, NULL, NULL>
+    goto <bb 10>;
+  else
+    goto <bb 7>;
+
+<bb 7>:
+  gimple_assign <var_decl, res.1_41, res, NULL>
+  gimple_assign <ssa_name, res.18, res.1_41, NULL>
+  gimple_assign <mem_ref, __lhs_v1.15_43, MEM[(double *)&res.18], NULL>
+  gimple_assign <mem_ref, __lhs_v2.16_45, MEM[(double *)&res.18 + 8B], NULL>
+  gimple_assign <vector_cst, a.22, { 3.29123456791234502816223539412021636962890625e+2, 3.29123456791234502816223539412021636962890625e+2, 3.29123456791234502816223539412021636962890625e+2, 3.29123456791234502816223539412021636962890625e+2 }, NULL>
+  gimple_assign <mem_ref, __rhs_v1.19_47, MEM[(double *)&a.22], NULL>
+  gimple_assign <mem_ref, __rhs_v2.20_49, MEM[(double *)&a.22 + 8B], NULL>
+  gimple_assign <gt_expr, D.6724_50, __lhs_v1.15_43, __rhs_v1.19_47>
+  gimple_assign <nop_expr, __rtn_v1.23_51, D.6724_50, NULL>
+  gimple_assign <gt_expr, D.6725_52, __lhs_v2.16_45, __rhs_v2.20_49>
+  gimple_assign <nop_expr, __rtn_v2.24_53, D.6725_52, NULL>
+  gimple_assign <eq_expr, __cmp.25_54, __rtn_v1.23_51, __rtn_v2.24_53>
+  gimple_cond <eq_expr, __cmp.25_54, 0, NULL, NULL>
+    goto <bb 8>;
+  else
+    goto <bb 9>;
+
+<bb 8>:
+  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+  gimple_debug BIND <D#4, &a.22>
+  gimple_debug BIND <D#3, *D#4>
+  gimple_debug BIND <a, D#3>
+
+<bb 9>:
+  # gimple_phi <__rtn_v1.23_3, __rtn_v1.23_51(7), __rtn_v1.23_55(8)>
+  gimple_cond <eq_expr, __rtn_v1.23_3, 1, NULL, NULL>
+    goto <bb 10>;
+  else
+    goto <bb 11>;
+
+<bb 10>:
+  gimple_assign <bit_field_ref, D.6691_62, BIT_FIELD_REF <res, 64, 64>, NULL>
+  gimple_assign <bit_field_ref, D.6692_63, BIT_FIELD_REF <res, 64, 0>, NULL>
+  gimple_call <printf, NULL, "T:%.17lf %.17lf\n", D.6692_63, D.6691_62>
+  gimple_call <printf, NULL, "res:%lx\n", &res>
+  gimple_call <__builtin_puts, NULL, &"true"[0]>
+  goto <bb 12>;
+
+<bb 11>:
+  gimple_assign <bit_field_ref, D.6691_60, BIT_FIELD_REF <res, 64, 64>, NULL>
+  gimple_assign <bit_field_ref, D.6692_61, BIT_FIELD_REF <res, 64, 0>, NULL>
+  gimple_call <printf, NULL, "F:%.17lf %.17lf\n", D.6692_61, D.6691_60>
+  gimple_call <printf, NULL, "res:%lx\n", &res>
+  gimple_call <__builtin_puts, NULL, &"false"[0]>
+
+<bb 12>:
+  gimple_assign <constructor, res, {CLOBBER}, NULL>
+  gimple_return <NULL>
+
+}
+
+
+
+;; Function _GLOBAL__sub_I_00099_0_main (_GLOBAL__sub_I_00099_0_main, funcdef_no=813, return=void_type, decl_uid=6771, cgraph_uid=0)
+
+_GLOBAL__sub_I_00099_0_main ()
+{
+<bb 2>:
+  gimple_call <lineage_init, NULL>
+  gimple_return <NULL>
+
+}
+
+
+
+;; Function _GLOBAL__sub_D_00099_1_main (_GLOBAL__sub_D_00099_1_main, funcdef_no=814, return=void_type, decl_uid=6777, cgraph_uid=788)
+
+_GLOBAL__sub_D_00099_1_main ()
+{
+<bb 2>:
+  gimple_call <lineage_fini, NULL>
+  gimple_return <NULL>
+
+}
+
+

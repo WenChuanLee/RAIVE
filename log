@@ -1,0 +1,1843 @@
+gcc/Makefile.in:	lineage.o \
+gcc/Makefile.in:	lineage-fp.o \
+gcc/Makefile.in:lineage.o : lineage.c $(CONFIG_H) $(SYSTEM_H) $(TREE_H)
+gcc/Makefile.in:lineage-fp.o : lineage-fp.c $(CONFIG_H) $(SYSTEM_H) $(TREE_H)
+gcc/c-convert.c:	   * For lineage, we do the following:
+gcc/c-decl.c:  if (flag_lineage)
+gcc/c-decl.c:      if (flag_lineage_vec)
+gcc/c-decl.c:  if (flag_lineage)
+gcc/c-decl.c:      if (flag_lineage_vec)
+gcc/c-family/c-common.c:#include "lineage.h"
+gcc/c-family/c-common.c:  if (flag_lineage)
+gcc/c-family/c-common.c:    lineage_init ();
+gcc/c-family/c-common.c:  if (flag_lineage || flag_lineage_fp)
+gcc/c-family/c-common.c:    lineage_fp_init ();
+gcc/c-typeck.c:  /* For lineage purpose, we convert rhs to vec type */
+gcc/c-typeck.c:     * predicate in later pass, e.g. -flineage-fp and -flineage. Otherwise it
+gcc/common.opt:flineage
+gcc/common.opt:Common RejectNegative Report Var(flag_lineage) Optimization
+gcc/common.opt:Data lineage tracing instrumentation
+gcc/common.opt:flineage-fp
+gcc/common.opt:Common RejectNegative Report Var(flag_lineage_fp) Optimization
+gcc/common.opt:flineage-vec
+gcc/common.opt:Common RejectNegative Report Var(flag_lineage_vec) Optimization
+gcc/common.opt:Data lineage tracing instrumentation with vectorizing DF to m256d
+gcc/common.opt:flineage-kmeans
+gcc/common.opt:Common RejectNegative Report Var(flag_lineage_kmeans) Optimization
+gcc/common.opt:flineage-deisotope
+gcc/common.opt:Common RejectNegative Report Var(flag_lineage_deisotope) Optimization
+gcc/common.opt:flineage-galgel
+gcc/common.opt:Common RejectNegative Report Var(flag_lineage_galgel) Optimization
+gcc/fortran/trans-intrinsic.c:/* Helper for lineage_init: construct a decl with the given category,
+gcc/fortran/trans-intrinsic.c:lineage_make_builtin (enum tree_code category, const char *name, tree type)
+gcc/fortran/f95-lang.c:#include "lineage.h"
+gcc/fortran/f95-lang.c:  if (flag_lineage)
+gcc/fortran/f95-lang.c:    lineage_init ();
+gcc/fortran/f95-lang.c:  if (flag_lineage || flag_lineage_fp)
+gcc/fortran/f95-lang.c:    lineage_fp_init ();
+gcc/fortran/f95-lang.c:/* Helper for lineage_init: construct a decl with the given category,
+gcc/fortran/f95-lang.c:lineage_make_builtin (enum tree_code category, const char *name, tree type)
+gcc/fortran/f95-lang.c:    mm256_pow_pd_fndecl = lineage_make_builtin (FUNCTION_DECL,
+gcc/fortran/f95-lang.c:    mm256_pow_pdi_fndecl = lineage_make_builtin (FUNCTION_DECL,
+gcc/fortran/f95-lang.c:    mm256_fabs_pd_fndecl = lineage_make_builtin (FUNCTION_DECL,
+gcc/fortran/decl.c:  if (flag_lineage_vec)
+gcc/java/ChangeLog:	java.lang.Object.  Verify lineage of throws clause elements. Use
+gcc/lineage-fp.c:/* lineage-fp.c
+gcc/lineage-fp.c: * The name stands for lineage-fix-predicate, or lineage-floating-point. It 
+gcc/lineage-fp.c:#include "lineage.h"
+gcc/lineage-fp.c:/* This struct is passed between lineage_xform_decls to store state needed
+gcc/lineage-fp.c:struct lineage_xform_decls_data
+gcc/lineage-fp.c:/* void lineage_icmp256_fndecl (int, v4df, v4df) */
+gcc/lineage-fp.c:static GTY (()) tree lineage_icmp256_fndecl;
+gcc/lineage-fp.c:static GTY (()) tree lineage_memalign_fndecl;
+gcc/lineage-fp.c:static GTY (()) tree lineage_memcpy_fndecl;
+gcc/lineage-fp.c:/* Helper for lineage_init: construct a decl with the given category,
+gcc/lineage-fp.c:lineage_make_builtin (enum tree_code category, const char *name, tree type)
+gcc/lineage-fp.c:lineage_fp_init (void)
+gcc/lineage-fp.c:	/* int lineage_icmp256_fndecl (int, v4df, v4df) */
+gcc/lineage-fp.c:		tree lineage_icmp256_fndecl_fntype = 
+gcc/lineage-fp.c:		lineage_icmp256_fndecl =
+gcc/lineage-fp.c:			lineage_make_builtin (FUNCTION_DECL, "icmp256",
+gcc/lineage-fp.c:					lineage_icmp256_fndecl_fntype);
+gcc/lineage-fp.c:		tree lineage_memalign_fntype =
+gcc/lineage-fp.c:		lineage_memalign_fndecl =
+gcc/lineage-fp.c:			lineage_make_builtin (FUNCTION_DECL, "memalign",
+gcc/lineage-fp.c:					lineage_memalign_fntype);
+gcc/lineage-fp.c:		tree lineage_memcpy_fntype =
+gcc/lineage-fp.c:		lineage_memcpy_fndecl =
+gcc/lineage-fp.c:			lineage_make_builtin (FUNCTION_DECL, "memcpy",
+gcc/lineage-fp.c:					lineage_memcpy_fntype);
+gcc/lineage-fp.c:lineage_fp_xfn_xform_fn_gimple_assign(gimple_stmt_iterator *gsi, gimple stmt)
+gcc/lineage-fp.c:lineage_fp_xfn_xform_fn_gimple_call (gimple_stmt_iterator *gsi, gimple stmt)
+gcc/lineage-fp.c:		fncall = gimple_build_call (lineage_memalign_fndecl, 2,
+gcc/lineage-fp.c:		fncall = gimple_build_call (lineage_memalign_fndecl, 2,
+gcc/lineage-fp.c:		fncall = gimple_build_call (lineage_memcpy_fndecl, 3,
+gcc/lineage-fp.c:lineage_xfn_xform_fn (gimple_stmt_iterator *gsi,
+gcc/lineage-fp.c:			//lineage_fp_xfn_xform_fn_gimple_assign (gsi, stmt);
+gcc/lineage-fp.c:			//lineage_fp_xfn_xform_fn_gimple_call (gsi, stmt);
+gcc/lineage-fp.c:			 * unless only -flineage-fp is specified. 
+gcc/lineage-fp.c:			if (flag_lineage) {
+gcc/lineage-fp.c:					lineage_patch_predicate256 (gsi, stmt);
+gcc/lineage-fp.c:lineage_xform_fn (gimple_seq fnbody, tree fnparams)
+gcc/lineage-fp.c:	struct lineage_xform_decls_data d;
+gcc/lineage-fp.c:	walk_gimple_seq (fnbody, lineage_xfn_xform_fn, NULL, &wi);
+gcc/lineage-fp.c:do_lineage_fp (void)
+gcc/lineage-fp.c:	fprintf (stderr, ";; [do_lineage_fp] %s\n", decl_name);
+gcc/lineage-fp.c:	lineage_xform_fn (gimple_body (current_function_decl),
+gcc/lineage-fp.c:gate_lineage_fp (void)
+gcc/lineage-fp.c:	return (flag_lineage_fp != 0 || flag_lineage != 0);
+gcc/lineage-fp.c:struct gimple_opt_pass pass_lineage_fp =
+gcc/lineage-fp.c:		"lineagefp",                 /* name */
+gcc/lineage-fp.c:		gate_lineage_fp,              /* gate */
+gcc/lineage-fp.c:		do_lineage_fp,                /* execute */
+gcc/lineage.c:#include "lineage.h"
+gcc/lineage.c:/* extern void __lineage_init (void); */
+gcc/lineage.c:static GTY (()) tree lineage_init_fndecl;
+gcc/lineage.c:/* extern void __lineage_fini (void); */
+gcc/lineage.c:static GTY (()) tree lineage_fini_fndecl;
+gcc/lineage.c:/* extern unsigned __lineage_union_fndecl (unsigned); */
+gcc/lineage.c:static GTY (()) tree lineage_union_fndecl;
+gcc/lineage.c:/* extern void lineage_acc_err(double, double, double, 
+gcc/lineage.c:static GTY (()) tree lineage_acc_err_fndecl;
+gcc/lineage.c:/* extern void lineage_large_cancel(double, double, double, 
+gcc/lineage.c:static GTY (()) tree lineage_large_cancel_fndecl;
+gcc/lineage.c:/* extern void lineage_record_op(const char *desc) 
+gcc/lineage.c:static GTY (()) tree lineage_record_op_fndecl;
+gcc/lineage.c:/* extern void lineage_print_value(usigned long int, const char *desc) */
+gcc/lineage.c:static GTY (()) tree lineage_print_value_fndecl;
+gcc/lineage.c:/* extern void lineage_print_vector(__m256d *ptr) */
+gcc/lineage.c:static GTY (()) tree lineage_print_vector_fndecl;
+gcc/lineage.c: * extern int lineage_spawn(int r1, int r2, 
+gcc/lineage.c:static GTY (()) tree lineage_spawn_fndecl;
+gcc/lineage.c: * extern void lineage_check_equal(__m256d *vec, const char *desc) 
+gcc/lineage.c:static GTY (()) tree lineage_check_equal_fndecl;
+gcc/lineage.c: * extern void lineage_force_exit(const char *desc) 
+gcc/lineage.c:static GTY (()) tree lineage_force_exit_fndecl;
+gcc/lineage.c: * extern int lineage_check_concore(void *plhs, void *prhs, int type,
+gcc/lineage.c:static GTY (()) tree lineage_check_concore_fndecl;
+gcc/lineage.c: * extern void lineage_random_rounding_mode();
+gcc/lineage.c:static GTY (()) tree lineage_random_rounding_mode_fndecl;
+gcc/lineage.c: * extern double lineage_random_last_bit(double);
+gcc/lineage.c:static GTY (()) tree lineage_random_last_bit_fndecl;
+gcc/lineage.c:static tree lineage_decls_mark (tree t);
+gcc/lineage.c:static int lineage_decls_marked_p (tree t);
+gcc/lineage.c:static gimple lineage_stmts_mark (gimple gs);
+gcc/lineage.c:static int lineage_stmts_marked_p (gimple gs);
+gcc/lineage.c:static void lineage_xform_fn (gimple_seq, tree);
+gcc/lineage.c:static tree lineage_xfn_xform_fn (gimple_stmt_iterator *, bool *, struct walk_stmt_info *);
+gcc/lineage.c:static tree lineage_get_addr (gimple_seq *, tree, location_t);
+gcc/lineage.c:lineage_build_string (const char *string)
+gcc/lineage.c:	tree result = lineage_decls_mark (build_string (len + 1, string));
+gcc/lineage.c:	return lineage_decls_mark (result);
+gcc/lineage.c:	result = lineage_build_string (buf_contents);
+gcc/lineage.c:lineage_decls_mark (tree t)
+gcc/lineage.c:lineage_decls_marked_p (tree t)
+gcc/lineage.c:lineage_stmts_mark (gimple gs)  
+gcc/lineage.c:lineage_stmts_marked_p (gimple gs)
+gcc/lineage.c: * Helper for lineage_init: construct a decl with the given category,
+gcc/lineage.c:lineage_make_builtin (enum tree_code category, const char *name, tree type)
+gcc/lineage.c:lineage_init (void)
+gcc/lineage.c:	tree lineage_const_string_type;
+gcc/lineage.c:	lineage_const_string_type =
+gcc/lineage.c:		tree lineage_init_fntype = 
+gcc/lineage.c:		lineage_init_fndecl =
+gcc/lineage.c:			lineage_make_builtin (FUNCTION_DECL, "lineage_init",
+gcc/lineage.c:					lineage_init_fntype);
+gcc/lineage.c:		tree lineage_fini_fntype = 
+gcc/lineage.c:		lineage_fini_fndecl =
+gcc/lineage.c:			lineage_make_builtin (FUNCTION_DECL, "lineage_fini",
+gcc/lineage.c:					lineage_fini_fntype);
+gcc/lineage.c:		tree lineage_acc_err_fntype;
+gcc/lineage.c:		lineage_acc_err_fntype = 
+gcc/lineage.c:				long_unsigned_type_node, lineage_const_string_type);
+gcc/lineage.c:		lineage_acc_err_fndecl = 
+gcc/lineage.c:			lineage_make_builtin(FUNCTION_DECL, "lineage_acc_err",
+gcc/lineage.c:				lineage_acc_err_fntype);
+gcc/lineage.c:		tree lineage_large_cancel_fntype;
+gcc/lineage.c:		lineage_large_cancel_fntype = 
+gcc/lineage.c:				lineage_const_string_type);
+gcc/lineage.c:		lineage_large_cancel_fndecl = 
+gcc/lineage.c:			lineage_make_builtin(FUNCTION_DECL, "lineage_large_cancel",
+gcc/lineage.c:				lineage_large_cancel_fntype);
+gcc/lineage.c:		tree lineage_record_op_fntype;
+gcc/lineage.c:		lineage_record_op_fntype = 
+gcc/lineage.c:				lineage_const_string_type);
+gcc/lineage.c:		lineage_record_op_fndecl = 
+gcc/lineage.c:			lineage_make_builtin(FUNCTION_DECL, "lineage_record_op",
+gcc/lineage.c:				lineage_record_op_fntype);
+gcc/lineage.c:		tree lineage_print_value_fntype;
+gcc/lineage.c:		lineage_print_value_fntype = 
+gcc/lineage.c:				lineage_const_string_type);
+gcc/lineage.c:		lineage_print_value_fndecl = 
+gcc/lineage.c:			lineage_make_builtin(FUNCTION_DECL, "lineage_print_value",
+gcc/lineage.c:				lineage_print_value_fntype);
+gcc/lineage.c:		tree lineage_print_vector_fntype;
+gcc/lineage.c:		lineage_print_vector_fntype = 
+gcc/lineage.c:		lineage_print_vector_fndecl = 
+gcc/lineage.c:			lineage_make_builtin(FUNCTION_DECL, "lineage_print_vector",
+gcc/lineage.c:				lineage_print_vector_fntype);
+gcc/lineage.c:		tree lineage_spawn_fntype;
+gcc/lineage.c:		lineage_spawn_fntype = 
+gcc/lineage.c:				lineage_const_string_type);
+gcc/lineage.c:		lineage_spawn_fndecl = 
+gcc/lineage.c:			lineage_make_builtin(FUNCTION_DECL, "lineage_spawn",
+gcc/lineage.c:				lineage_spawn_fntype);
+gcc/lineage.c:		tree lineage_check_equal_fntype;
+gcc/lineage.c:		lineage_check_equal_fntype = 
+gcc/lineage.c:				lineage_const_string_type);
+gcc/lineage.c:		lineage_check_equal_fndecl = 
+gcc/lineage.c:			lineage_make_builtin(FUNCTION_DECL, "lineage_check_equal",
+gcc/lineage.c:				lineage_check_equal_fntype);
+gcc/lineage.c:		tree lineage_force_exit_fntype;
+gcc/lineage.c:		lineage_force_exit_fntype = 
+gcc/lineage.c:			build_function_type_1(void_type_node, lineage_const_string_type);
+gcc/lineage.c:		lineage_force_exit_fndecl = 
+gcc/lineage.c:			lineage_make_builtin(FUNCTION_DECL, "lineage_force_exit",
+gcc/lineage.c:				lineage_force_exit_fntype);
+gcc/lineage.c:		tree lineage_check_concore_fntype;
+gcc/lineage.c:		lineage_check_concore_fntype = 
+gcc/lineage.c:				integer_type_node, lineage_const_string_type);
+gcc/lineage.c:		lineage_check_concore_fndecl = 
+gcc/lineage.c:			lineage_make_builtin(FUNCTION_DECL, "lineage_check_concore",
+gcc/lineage.c:				lineage_check_concore_fntype);
+gcc/lineage.c:			lineage_make_builtin(FUNCTION_DECL, "inst_vec_elemcpy",
+gcc/lineage.c:			lineage_make_builtin(FUNCTION_DECL, "inst_vec_check_nan",
+gcc/lineage.c:				lineage_const_string_type);
+gcc/lineage.c:			lineage_make_builtin(FUNCTION_DECL, "inst_vec_debug",
+gcc/lineage.c:		tree lineage_random_rounding_mode_fntype;
+gcc/lineage.c:		lineage_random_rounding_mode_fntype = 
+gcc/lineage.c:		lineage_random_rounding_mode_fndecl = 
+gcc/lineage.c:			lineage_make_builtin(FUNCTION_DECL, "lineage_random_rounding_mode",
+gcc/lineage.c:				lineage_random_rounding_mode_fntype);
+gcc/lineage.c:		tree lineage_random_last_bit_fntype;
+gcc/lineage.c:		lineage_random_last_bit_fntype = 
+gcc/lineage.c:		lineage_random_last_bit_fndecl = 
+gcc/lineage.c:			lineage_make_builtin(FUNCTION_DECL, "lineage_random_last_bit",
+gcc/lineage.c:				lineage_random_last_bit_fntype);
+gcc/lineage.c:lineage_get_addr_plus_8 (gimple_seq *seq_p, tree addr, location_t location)
+gcc/lineage.c:	addr_op1_0 = lineage_decls_mark (
+gcc/lineage.c:	addr_op1_8 = lineage_decls_mark (
+gcc/lineage.c:lineage_get_imag (gimple_seq *seq_p, tree decl, tree addr, location_t location)
+gcc/lineage.c:		addr_op1_8 = lineage_get_addr_plus_8 (seq_p, addr, location);
+gcc/lineage.c:		tree_imag = lineage_gen_get_shadow (seq_p, decl, addr_op1_8, location);
+gcc/lineage.c:/* This struct is passed between lineage_xform_decls to store state needed
+gcc/lineage.c:struct lineage_xform_decls_data
+gcc/lineage.c:lineage_mark_seq (gimple_stmt_iterator *gsi,
+gcc/lineage.c:	lineage_stmts_mark (stmt);
+gcc/lineage.c:static void lineage_dump_op_name(tree op)
+gcc/lineage.c:static void lineage_dump_stmt(gimple gs)
+gcc/lineage.c:			lineage_dump_op_name(op);
+gcc/lineage.c:static tree lineage_get_last_def(gimple_stmt_iterator *gsi, tree var)
+gcc/lineage.c:static tree lineage_get_decl_var_rec(
+gcc/lineage.c:						if (prhs = lineage_get_decl_var_rec(pSeq->prev, prhs))
+gcc/lineage.c:					return lineage_get_decl_var_rec(pSeq->prev, var);
+gcc/lineage.c:lineage_assert(gimple_seq *seq, location_t location, 
+gcc/lineage.c:	g = gimple_build_call(lineage_force_exit_fndecl, 1, 
+gcc/lineage.c:		lineage_build_string(detail_decl_info(lhs, location)));
+gcc/lineage.c:lineage_inline_vec_debug(gimple_seq *seq0_p, gimple_seq *seq2_p, 
+gcc/lineage.c:		lineage_build_string(detail_decl_info(op0, location)));
+gcc/lineage.c:		g = lineage_stmts_mark (gimple_build_bind (NULL, seq2, NULL));
+gcc/lineage.c:		walk_gimple_seq (*seq2_p, lineage_mark_seq, NULL, &wi);
+gcc/lineage.c:lineage_inline_plus_minus(gimple_seq *seq0_p, gimple_seq *seq2_p, 
+gcc/lineage.c:			op1_copy = lineage_decls_mark(
+gcc/lineage.c:			g = lineage_stmts_mark(gimple_build_assign(op1_copy, 
+gcc/lineage.c:			vop0_ptr = lineage_decls_mark (
+gcc/lineage.c:			op0_ptr = lineage_decls_mark (
+gcc/lineage.c:			vop1_ptr = lineage_decls_mark (
+gcc/lineage.c:			op1_ptr = lineage_decls_mark (
+gcc/lineage.c:			exp0 = lineage_decls_mark (
+gcc/lineage.c:			exp1 = lineage_decls_mark(
+gcc/lineage.c:			/*exp2 = lineage_decls_mark(
+gcc/lineage.c:				g = gimple_build_call(lineage_print_value_fndecl, 2, delta,
+gcc/lineage.c:					lineage_build_string(
+gcc/lineage.c:				lineage_assert(&seq2, location, LE_EXPR,
+gcc/lineage.c:				g = gimple_build_call(lineage_random_rounding_mode_fndecl, 0);
+gcc/lineage.c:				g = gimple_build_call(lineage_random_last_bit_fndecl, 1,
+gcc/lineage.c:				g = gimple_build_call(lineage_record_op_fndecl, 1,
+gcc/lineage.c:					lineage_build_string(
+gcc/lineage.c:				op1_copy = lineage_decls_mark(
+gcc/lineage.c:				g = lineage_stmts_mark(gimple_build_assign(op1_copy, 
+gcc/lineage.c:				op1_ptr = lineage_decls_mark(
+gcc/lineage.c:				op2_ptr = lineage_decls_mark(
+gcc/lineage.c:				op1_exp = lineage_decls_mark(
+gcc/lineage.c:				op2_exp = lineage_decls_mark(
+gcc/lineage.c:					g = gimple_build_call(lineage_acc_err_fndecl, 5, 
+gcc/lineage.c:							lineage_build_string(
+gcc/lineage.c:				op0_ptr = lineage_decls_mark(
+gcc/lineage.c:				op0_exp = lineage_decls_mark(
+gcc/lineage.c:					g = gimple_build_call(lineage_large_cancel_fndecl, 6, 
+gcc/lineage.c:							lineage_build_string(
+gcc/lineage.c:				g = gimple_build_call(lineage_random_rounding_mode_fndecl, 0);
+gcc/lineage.c:		g = lineage_stmts_mark (gimple_build_bind (NULL, seq0, NULL));
+gcc/lineage.c:		g = lineage_stmts_mark (gimple_build_bind (NULL, seq2, NULL));
+gcc/lineage.c:		walk_gimple_seq (*seq0_p, lineage_mark_seq, NULL, &wi);
+gcc/lineage.c:		walk_gimple_seq (*seq2_p, lineage_mark_seq, NULL, &wi);
+gcc/lineage.c:lineage_inline_rdiv(gimple_stmt_iterator *gsi, gimple_seq *seq0_p, 
+gcc/lineage.c:	   (lastDef = lineage_get_last_def(gsi, op2)) &&
+gcc/lineage.c:			vop2_ptr = lineage_decls_mark(create_tmp_var(
+gcc/lineage.c:			op2_tmp = lineage_decls_mark(create_tmp_var(
+gcc/lineage.c:			op2_ptr1 = lineage_decls_mark(create_tmp_var(
+gcc/lineage.c:			op2_ptr2 = lineage_decls_mark(create_tmp_var(
+gcc/lineage.c:			op2_ptr3 = lineage_decls_mark(create_tmp_var(
+gcc/lineage.c:			double_tmp = lineage_decls_mark(create_tmp_var(
+gcc/lineage.c:		g = lineage_stmts_mark (gimple_build_bind (NULL, seq0, NULL));
+gcc/lineage.c:		g = lineage_stmts_mark (gimple_build_bind (NULL, seq2, NULL));
+gcc/lineage.c:		walk_gimple_seq (*seq0_p, lineage_mark_seq, NULL, &wi);
+gcc/lineage.c:		walk_gimple_seq (*seq2_p, lineage_mark_seq, NULL, &wi);
+gcc/lineage.c:lineage_inline_check_nan(gimple_seq *seq0_p, gimple_seq *seq2_p, 
+gcc/lineage.c:			vop0_ptr = lineage_decls_mark(create_tmp_var(
+gcc/lineage.c:			op0_tmp = lineage_decls_mark(create_tmp_var(
+gcc/lineage.c:		g = lineage_stmts_mark (gimple_build_bind (NULL, seq0, NULL));
+gcc/lineage.c:		g = lineage_stmts_mark (gimple_build_bind (NULL, seq2, NULL));
+gcc/lineage.c:		walk_gimple_seq (*seq0_p, lineage_mark_seq, NULL, &wi);
+gcc/lineage.c:		walk_gimple_seq (*seq2_p, lineage_mark_seq, NULL, &wi);
+gcc/lineage.c:lineage_get_array_addr(const tree decl, gimple_seq *seq_p, location_t location)
+gcc/lineage.c:	tree t1 = lineage_decls_mark (create_tmp_var (
+gcc/lineage.c:	walk_gimple_seq (*seq_p, lineage_mark_seq, NULL, &wi);
+gcc/lineage.c:lineage_get_component_addr (const tree decl, gimple_seq *seq_p, location_t location)
+gcc/lineage.c:	tree t1 = lineage_decls_mark (create_tmp_var (
+gcc/lineage.c:	walk_gimple_seq (*seq_p, lineage_mark_seq, NULL, &wi);
+gcc/lineage.c:lineage_xfn_xform_fn_gimple_assign(gimple_stmt_iterator *gsi, gimple stmt)
+gcc/lineage.c:					g = gimple_build_call(lineage_check_equal_fndecl, 2, 
+gcc/lineage.c:						t, lineage_build_string(detail_decl_info(op0, location)));
+gcc/lineage.c:					g = lineage_stmts_mark (gimple_build_bind (NULL, seq, NULL));
+gcc/lineage.c:						walk_gimple_seq (seq_after, lineage_mark_seq, NULL, &wi);
+gcc/lineage.c:					lineage_inline_plus_minus (&seq_before, &seq_after, 
+gcc/lineage.c:				} else if (flag_lineage_galgel &&
+gcc/lineage.c:					lineage_inline_check_nan (&seq_before, &seq_after, 
+gcc/lineage.c:static tree lineage_search_match_label(tree label, location_t loc)
+gcc/lineage.c:static gimple lineage_handle_stmt(gimple stmt, 
+gcc/lineage.c:			tree new_t_label = lineage_search_match_label(t_label, loc);
+gcc/lineage.c:			tree new_f_label = lineage_search_match_label(f_label, loc);
+gcc/lineage.c:			tree new_label = lineage_search_match_label(label, loc);
+gcc/lineage.c:						lineage_search_match_label(goto_label, loc);
+gcc/lineage.c:static int lineage_bypass_func()
+gcc/lineage.c:	if (flag_lineage_kmeans) {
+gcc/lineage.c:	if (flag_lineage_deisotope || flag_lineage_galgel) {
+gcc/lineage.c:lineage_handle_concore(gimple_stmt_iterator *gsi, gimple_seq *seq2, 
+gcc/lineage.c:	if (label_diff > 1 || lineage_bypass_func())
+gcc/lineage.c:		g = lineage_handle_stmt(stmt, pSeqNode, f_label);
+gcc/lineage.c:		g = gimple_build_call(lineage_check_concore_fndecl, 5, 
+gcc/lineage.c:				lineage_build_string(detail_decl_info(lhs, location)));
+gcc/lineage.c:		g = lineage_stmts_mark (gimple_build_bind (NULL, seq, NULL));
+gcc/lineage.c:lineage_patch_predicate256(gimple_stmt_iterator *gsi, gimple stmt)
+gcc/lineage.c:			lineage_get_decl_var_rec(gsi->ptr->prev, vlhs) : 
+gcc/lineage.c:			lineage_get_decl_var_rec(gsi->ptr->prev, vrhs) : 
+gcc/lineage.c:		lhs_v1 = lineage_decls_mark(create_tmp_var(
+gcc/lineage.c:		lhs_v2 = lineage_decls_mark(create_tmp_var(
+gcc/lineage.c:		lhs_v3 = lineage_decls_mark(create_tmp_var(
+gcc/lineage.c:		lhs_ptr = lineage_decls_mark (create_tmp_var (
+gcc/lineage.c:		rhs_v1 = lineage_decls_mark (create_tmp_var (
+gcc/lineage.c:		rhs_v2 = lineage_decls_mark (create_tmp_var (
+gcc/lineage.c:		rhs_v3 = lineage_decls_mark (create_tmp_var (
+gcc/lineage.c:		rhs_ptr = lineage_decls_mark (create_tmp_var (
+gcc/lineage.c:		 * lineage_spawn, else continue execution.
+gcc/lineage.c:		lineage_handle_concore(gsi, &seq2, label_check_and_set_done);
+gcc/lineage.c:		g = gimple_build_call(lineage_spawn_fndecl, 6, 
+gcc/lineage.c:				lineage_build_string(detail_decl_info(vlhs, location)));
+gcc/lineage.c:		walk_gimple_seq (seq2, lineage_mark_seq, NULL, &wi);
+gcc/lineage.c:		g = lineage_stmts_mark (gimple_build_bind (NULL, seq2, NULL));
+gcc/lineage.c:lineage_patch_predicate256(gimple_stmt_iterator *gsi, gimple stmt)
+gcc/lineage.c:		lhs_v1 = lineage_decls_mark(create_tmp_var(
+gcc/lineage.c:		lhs_ptr = lineage_decls_mark (create_tmp_var (
+gcc/lineage.c:		rhs_v1 = lineage_decls_mark (create_tmp_var (
+gcc/lineage.c:		rhs_ptr = lineage_decls_mark (create_tmp_var (
+gcc/lineage.c:		walk_gimple_seq (seq2, lineage_mark_seq, NULL, &wi);
+gcc/lineage.c:		g = lineage_stmts_mark (gimple_build_bind (NULL, seq2, NULL));
+gcc/lineage.c:lineage_xfn_xform_fn_gimple_call(gimple_stmt_iterator *gsi, gimple stmt)
+gcc/lineage.c:	if (lineage_stmts_marked_p(stmt))
+gcc/lineage.c:lineage_xfn_xform_fn (gimple_stmt_iterator *gsi,
+gcc/lineage.c:	struct lineage_xform_decls_data *d = 
+gcc/lineage.c:		(struct lineage_xform_decls_data *) wi->info;
+gcc/lineage.c:	if (lineage_stmts_marked_p (stmt))
+gcc/lineage.c:			lineage_stmts_marked_p (stmt));
+gcc/lineage.c:			lineage_xfn_xform_fn_gimple_assign (gsi, stmt);
+gcc/lineage.c:			lineage_xfn_xform_fn_gimple_call (gsi, stmt);
+gcc/lineage.c:			 * The rest are done in lineage-fp.c (VEC)
+gcc/lineage.c:lineage_xform_fn(gimple_seq fnbody, tree fnparams)
+gcc/lineage.c:	struct lineage_xform_decls_data d;
+gcc/lineage.c:	walk_gimple_seq (fnbody, lineage_xfn_xform_fn, NULL, &wi);
+gcc/lineage.c:lineage_finish_file (void)
+gcc/lineage.c:	/* Insert a call to __lineage_init.  */
+gcc/lineage.c:			build_call_expr(lineage_init_fndecl, 1, 
+gcc/lineage.c:	/* Insert a call to __lineage_fini.  */
+gcc/lineage.c:		tree call2_stmt = build_call_expr (lineage_fini_fndecl, 0);
+gcc/lineage.c:static unsigned int do_lineage (void)
+gcc/lineage.c:	fprintf (stderr, ";; [do_lineage] %s\n", decl_name);
+gcc/lineage.c:	lineage_xform_fn (gimple_body (current_function_decl),
+gcc/lineage.c:gate_lineage (void)
+gcc/lineage.c:	return (flag_lineage != 0);
+gcc/lineage.c:struct gimple_opt_pass pass_lineage =
+gcc/lineage.c:		"lineage",                    /* name */
+gcc/lineage.c:		gate_lineage,                 /* gate */
+gcc/lineage.c:		do_lineage,                   /* execute */
+gcc/lineage.c:struct gimple_opt_pass pass_pre_lineage =
+gcc/lineage.c:		"prelineage",                 /* name */
+gcc/lineage.c:		gate_lineage,                 /* gate */
+gcc/lineage.h:extern void lineage_init (void);
+gcc/lineage.h:extern void lineage_fp_init (void);
+gcc/lineage.h:extern void lineage_finish_file (void);
+gcc/lineage.h:extern void lineage_patch_predicate256 (gimple_stmt_iterator *, gimple);
+gcc/log:Makefile.in:	lineage.o \
+gcc/log:Makefile.in:	lineage-fp.o \
+gcc/log:Makefile.in:lineage.o : lineage.c $(CONFIG_H) $(SYSTEM_H) $(TREE_H)
+gcc/log:Makefile.in:lineage-fp.o : lineage-fp.c $(CONFIG_H) $(SYSTEM_H) $(TREE_H)
+gcc/log:c-convert.c:	   * For lineage, we do the following:
+gcc/log:c-decl.c:  if (flag_lineage)
+gcc/log:c-decl.c:      if (flag_lineage_vec)
+gcc/log:c-decl.c:  if (flag_lineage)
+gcc/log:c-decl.c:      if (flag_lineage_vec)
+gcc/log:c-family/c-common.c:#include "lineage.h"
+gcc/log:c-family/c-common.c:  if (flag_lineage)
+gcc/log:c-family/c-common.c:    lineage_init ();
+gcc/log:c-family/c-common.c:  if (flag_lineage || flag_lineage_fp)
+gcc/log:c-family/c-common.c:    lineage_fp_init ();
+gcc/log:c-typeck.c:  /* For lineage purpose, we convert rhs to vec type */
+gcc/log:c-typeck.c:     * predicate in later pass, e.g. -flineage-fp and -flineage. Otherwise it
+gcc/log:common.opt:flineage
+gcc/log:common.opt:Common RejectNegative Report Var(flag_lineage) Optimization
+gcc/log:common.opt:Data lineage tracing instrumentation
+gcc/log:common.opt:flineage-fp
+gcc/log:common.opt:Common RejectNegative Report Var(flag_lineage_fp) Optimization
+gcc/log:common.opt:flineage-vec
+gcc/log:common.opt:Common RejectNegative Report Var(flag_lineage_vec) Optimization
+gcc/log:common.opt:Data lineage tracing instrumentation with vectorizing DF to m256d
+gcc/log:common.opt:flineage-kmeans
+gcc/log:common.opt:Common RejectNegative Report Var(flag_lineage_kmeans) Optimization
+gcc/log:common.opt:flineage-deisotope
+gcc/log:common.opt:Common RejectNegative Report Var(flag_lineage_deisotope) Optimization
+gcc/log:common.opt:flineage-galgel
+gcc/log:common.opt:Common RejectNegative Report Var(flag_lineage_galgel) Optimization
+gcc/log:fortran/trans-intrinsic.c:/* Helper for lineage_init: construct a decl with the given category,
+gcc/log:fortran/trans-intrinsic.c:lineage_make_builtin (enum tree_code category, const char *name, tree type)
+gcc/log:fortran/f95-lang.c:#include "lineage.h"
+gcc/log:fortran/f95-lang.c:  if (flag_lineage)
+gcc/log:fortran/f95-lang.c:    lineage_init ();
+gcc/log:fortran/f95-lang.c:  if (flag_lineage || flag_lineage_fp)
+gcc/log:fortran/f95-lang.c:    lineage_fp_init ();
+gcc/log:fortran/f95-lang.c:/* Helper for lineage_init: construct a decl with the given category,
+gcc/log:fortran/f95-lang.c:lineage_make_builtin (enum tree_code category, const char *name, tree type)
+gcc/log:fortran/f95-lang.c:    mm256_pow_pd_fndecl = lineage_make_builtin (FUNCTION_DECL,
+gcc/log:fortran/f95-lang.c:    mm256_pow_pdi_fndecl = lineage_make_builtin (FUNCTION_DECL,
+gcc/log:fortran/f95-lang.c:    mm256_fabs_pd_fndecl = lineage_make_builtin (FUNCTION_DECL,
+gcc/log:fortran/decl.c:  if (flag_lineage_vec)
+gcc/log:java/ChangeLog:	java.lang.Object.  Verify lineage of throws clause elements. Use
+gcc/log:lineage-fp.c:/* lineage-fp.c
+gcc/log:lineage-fp.c: * The name stands for lineage-fix-predicate, or lineage-floating-point. It 
+gcc/log:lineage-fp.c:#include "lineage.h"
+gcc/log:lineage-fp.c:/* This struct is passed between lineage_xform_decls to store state needed
+gcc/log:lineage-fp.c:struct lineage_xform_decls_data
+gcc/log:lineage-fp.c:/* void lineage_icmp256_fndecl (int, v4df, v4df) */
+gcc/log:lineage-fp.c:static GTY (()) tree lineage_icmp256_fndecl;
+gcc/log:lineage-fp.c:static GTY (()) tree lineage_memalign_fndecl;
+gcc/log:lineage-fp.c:static GTY (()) tree lineage_memcpy_fndecl;
+gcc/log:lineage-fp.c:/* Helper for lineage_init: construct a decl with the given category,
+gcc/log:lineage-fp.c:lineage_make_builtin (enum tree_code category, const char *name, tree type)
+gcc/log:lineage-fp.c:lineage_fp_init (void)
+gcc/log:lineage-fp.c:	/* int lineage_icmp256_fndecl (int, v4df, v4df) */
+gcc/log:lineage-fp.c:		tree lineage_icmp256_fndecl_fntype = 
+gcc/log:lineage-fp.c:		lineage_icmp256_fndecl =
+gcc/log:lineage-fp.c:			lineage_make_builtin (FUNCTION_DECL, "icmp256",
+gcc/log:lineage-fp.c:					lineage_icmp256_fndecl_fntype);
+gcc/log:lineage-fp.c:		tree lineage_memalign_fntype =
+gcc/log:lineage-fp.c:		lineage_memalign_fndecl =
+gcc/log:lineage-fp.c:			lineage_make_builtin (FUNCTION_DECL, "memalign",
+gcc/log:lineage-fp.c:					lineage_memalign_fntype);
+gcc/log:lineage-fp.c:		tree lineage_memcpy_fntype =
+gcc/log:lineage-fp.c:		lineage_memcpy_fndecl =
+gcc/log:lineage-fp.c:			lineage_make_builtin (FUNCTION_DECL, "memcpy",
+gcc/log:lineage-fp.c:					lineage_memcpy_fntype);
+gcc/log:lineage-fp.c:lineage_fp_xfn_xform_fn_gimple_assign(gimple_stmt_iterator *gsi, gimple stmt)
+gcc/log:lineage-fp.c:lineage_fp_xfn_xform_fn_gimple_call (gimple_stmt_iterator *gsi, gimple stmt)
+gcc/log:lineage-fp.c:		fncall = gimple_build_call (lineage_memalign_fndecl, 2,
+gcc/log:lineage-fp.c:		fncall = gimple_build_call (lineage_memalign_fndecl, 2,
+gcc/log:lineage-fp.c:		fncall = gimple_build_call (lineage_memcpy_fndecl, 3,
+gcc/log:lineage-fp.c:lineage_xfn_xform_fn (gimple_stmt_iterator *gsi,
+gcc/log:lineage-fp.c:			//lineage_fp_xfn_xform_fn_gimple_assign (gsi, stmt);
+gcc/log:lineage-fp.c:			//lineage_fp_xfn_xform_fn_gimple_call (gsi, stmt);
+gcc/log:lineage-fp.c:			 * unless only -flineage-fp is specified. 
+gcc/log:lineage-fp.c:			if (flag_lineage) {
+gcc/log:lineage-fp.c:					lineage_patch_predicate256 (gsi, stmt);
+gcc/log:lineage-fp.c:lineage_xform_fn (gimple_seq fnbody, tree fnparams)
+gcc/log:lineage-fp.c:	struct lineage_xform_decls_data d;
+gcc/log:lineage-fp.c:	walk_gimple_seq (fnbody, lineage_xfn_xform_fn, NULL, &wi);
+gcc/log:lineage-fp.c:do_lineage_fp (void)
+gcc/log:lineage-fp.c:	fprintf (stderr, ";; [do_lineage_fp] %s\n", decl_name);
+gcc/log:lineage-fp.c:	lineage_xform_fn (gimple_body (current_function_decl),
+gcc/log:lineage-fp.c:gate_lineage_fp (void)
+gcc/log:lineage-fp.c:	return (flag_lineage_fp != 0 || flag_lineage != 0);
+gcc/log:lineage-fp.c:struct gimple_opt_pass pass_lineage_fp =
+gcc/log:lineage-fp.c:		"lineagefp",                 /* name */
+gcc/log:lineage-fp.c:		gate_lineage_fp,              /* gate */
+gcc/log:lineage-fp.c:		do_lineage_fp,                /* execute */
+gcc/log:lineage.c:#include "lineage.h"
+gcc/log:lineage.c:/* extern void __lineage_init (void); */
+gcc/log:lineage.c:static GTY (()) tree lineage_init_fndecl;
+gcc/log:lineage.c:/* extern void __lineage_fini (void); */
+gcc/log:lineage.c:static GTY (()) tree lineage_fini_fndecl;
+gcc/log:lineage.c:/* extern unsigned __lineage_union_fndecl (unsigned); */
+gcc/log:lineage.c:static GTY (()) tree lineage_union_fndecl;
+gcc/log:lineage.c:/* extern void lineage_acc_err(double, double, double, 
+gcc/log:lineage.c:static GTY (()) tree lineage_acc_err_fndecl;
+gcc/log:lineage.c:/* extern void lineage_large_cancel(double, double, double, 
+gcc/log:lineage.c:static GTY (()) tree lineage_large_cancel_fndecl;
+gcc/log:lineage.c:/* extern void lineage_record_op(const char *desc) 
+gcc/log:lineage.c:static GTY (()) tree lineage_record_op_fndecl;
+gcc/log:lineage.c:/* extern void lineage_print_value(usigned long int, const char *desc) */
+gcc/log:lineage.c:static GTY (()) tree lineage_print_value_fndecl;
+gcc/log:lineage.c:/* extern void lineage_print_vector(__m256d *ptr) */
+gcc/log:lineage.c:static GTY (()) tree lineage_print_vector_fndecl;
+gcc/log:lineage.c: * extern int lineage_spawn(int r1, int r2, 
+gcc/log:lineage.c:static GTY (()) tree lineage_spawn_fndecl;
+gcc/log:lineage.c: * extern void lineage_check_equal(__m256d *vec, const char *desc) 
+gcc/log:lineage.c:static GTY (()) tree lineage_check_equal_fndecl;
+gcc/log:lineage.c: * extern void lineage_force_exit(const char *desc) 
+gcc/log:lineage.c:static GTY (()) tree lineage_force_exit_fndecl;
+gcc/log:lineage.c: * extern int lineage_check_concore(void *plhs, void *prhs, int type,
+gcc/log:lineage.c:static GTY (()) tree lineage_check_concore_fndecl;
+gcc/log:lineage.c: * extern void lineage_random_rounding_mode();
+gcc/log:lineage.c:static GTY (()) tree lineage_random_rounding_mode_fndecl;
+gcc/log:lineage.c: * extern double lineage_random_last_bit(double);
+gcc/log:lineage.c:static GTY (()) tree lineage_random_last_bit_fndecl;
+gcc/log:lineage.c:static tree lineage_decls_mark (tree t);
+gcc/log:lineage.c:static int lineage_decls_marked_p (tree t);
+gcc/log:lineage.c:static gimple lineage_stmts_mark (gimple gs);
+gcc/log:lineage.c:static int lineage_stmts_marked_p (gimple gs);
+gcc/log:lineage.c:static void lineage_xform_fn (gimple_seq, tree);
+gcc/log:lineage.c:static tree lineage_xfn_xform_fn (gimple_stmt_iterator *, bool *, struct walk_stmt_info *);
+gcc/log:lineage.c:static tree lineage_get_addr (gimple_seq *, tree, location_t);
+gcc/log:lineage.c:lineage_build_string (const char *string)
+gcc/log:lineage.c:	tree result = lineage_decls_mark (build_string (len + 1, string));
+gcc/log:lineage.c:	return lineage_decls_mark (result);
+gcc/log:lineage.c:	result = lineage_build_string (buf_contents);
+gcc/log:lineage.c:lineage_decls_mark (tree t)
+gcc/log:lineage.c:lineage_decls_marked_p (tree t)
+gcc/log:lineage.c:lineage_stmts_mark (gimple gs)  
+gcc/log:lineage.c:lineage_stmts_marked_p (gimple gs)
+gcc/log:lineage.c: * Helper for lineage_init: construct a decl with the given category,
+gcc/log:lineage.c:lineage_make_builtin (enum tree_code category, const char *name, tree type)
+gcc/log:lineage.c:lineage_init (void)
+gcc/log:lineage.c:	tree lineage_const_string_type;
+gcc/log:lineage.c:	lineage_const_string_type =
+gcc/log:lineage.c:		tree lineage_init_fntype = 
+gcc/log:lineage.c:		lineage_init_fndecl =
+gcc/log:lineage.c:			lineage_make_builtin (FUNCTION_DECL, "lineage_init",
+gcc/log:lineage.c:					lineage_init_fntype);
+gcc/log:lineage.c:		tree lineage_fini_fntype = 
+gcc/log:lineage.c:		lineage_fini_fndecl =
+gcc/log:lineage.c:			lineage_make_builtin (FUNCTION_DECL, "lineage_fini",
+gcc/log:lineage.c:					lineage_fini_fntype);
+gcc/log:lineage.c:		tree lineage_acc_err_fntype;
+gcc/log:lineage.c:		lineage_acc_err_fntype = 
+gcc/log:lineage.c:				long_unsigned_type_node, lineage_const_string_type);
+gcc/log:lineage.c:		lineage_acc_err_fndecl = 
+gcc/log:lineage.c:			lineage_make_builtin(FUNCTION_DECL, "lineage_acc_err",
+gcc/log:lineage.c:				lineage_acc_err_fntype);
+gcc/log:lineage.c:		tree lineage_large_cancel_fntype;
+gcc/log:lineage.c:		lineage_large_cancel_fntype = 
+gcc/log:lineage.c:				lineage_const_string_type);
+gcc/log:lineage.c:		lineage_large_cancel_fndecl = 
+gcc/log:lineage.c:			lineage_make_builtin(FUNCTION_DECL, "lineage_large_cancel",
+gcc/log:lineage.c:				lineage_large_cancel_fntype);
+gcc/log:lineage.c:		tree lineage_record_op_fntype;
+gcc/log:lineage.c:		lineage_record_op_fntype = 
+gcc/log:lineage.c:				lineage_const_string_type);
+gcc/log:lineage.c:		lineage_record_op_fndecl = 
+gcc/log:lineage.c:			lineage_make_builtin(FUNCTION_DECL, "lineage_record_op",
+gcc/log:lineage.c:				lineage_record_op_fntype);
+gcc/log:lineage.c:		tree lineage_print_value_fntype;
+gcc/log:lineage.c:		lineage_print_value_fntype = 
+gcc/log:lineage.c:				lineage_const_string_type);
+gcc/log:lineage.c:		lineage_print_value_fndecl = 
+gcc/log:lineage.c:			lineage_make_builtin(FUNCTION_DECL, "lineage_print_value",
+gcc/log:lineage.c:				lineage_print_value_fntype);
+gcc/log:lineage.c:		tree lineage_print_vector_fntype;
+gcc/log:lineage.c:		lineage_print_vector_fntype = 
+gcc/log:lineage.c:		lineage_print_vector_fndecl = 
+gcc/log:lineage.c:			lineage_make_builtin(FUNCTION_DECL, "lineage_print_vector",
+gcc/log:lineage.c:				lineage_print_vector_fntype);
+gcc/log:lineage.c:		tree lineage_spawn_fntype;
+gcc/log:lineage.c:		lineage_spawn_fntype = 
+gcc/log:lineage.c:				lineage_const_string_type);
+gcc/log:lineage.c:		lineage_spawn_fndecl = 
+gcc/log:lineage.c:			lineage_make_builtin(FUNCTION_DECL, "lineage_spawn",
+gcc/log:lineage.c:				lineage_spawn_fntype);
+gcc/log:lineage.c:		tree lineage_check_equal_fntype;
+gcc/log:lineage.c:		lineage_check_equal_fntype = 
+gcc/log:lineage.c:				lineage_const_string_type);
+gcc/log:lineage.c:		lineage_check_equal_fndecl = 
+gcc/log:lineage.c:			lineage_make_builtin(FUNCTION_DECL, "lineage_check_equal",
+gcc/log:lineage.c:				lineage_check_equal_fntype);
+gcc/log:lineage.c:		tree lineage_force_exit_fntype;
+gcc/log:lineage.c:		lineage_force_exit_fntype = 
+gcc/log:lineage.c:			build_function_type_1(void_type_node, lineage_const_string_type);
+gcc/log:lineage.c:		lineage_force_exit_fndecl = 
+gcc/log:lineage.c:			lineage_make_builtin(FUNCTION_DECL, "lineage_force_exit",
+gcc/log:lineage.c:				lineage_force_exit_fntype);
+gcc/log:lineage.c:		tree lineage_check_concore_fntype;
+gcc/log:lineage.c:		lineage_check_concore_fntype = 
+gcc/log:lineage.c:				integer_type_node, lineage_const_string_type);
+gcc/log:lineage.c:		lineage_check_concore_fndecl = 
+gcc/log:lineage.c:			lineage_make_builtin(FUNCTION_DECL, "lineage_check_concore",
+gcc/log:lineage.c:				lineage_check_concore_fntype);
+gcc/log:lineage.c:			lineage_make_builtin(FUNCTION_DECL, "inst_vec_elemcpy",
+gcc/log:lineage.c:			lineage_make_builtin(FUNCTION_DECL, "inst_vec_check_nan",
+gcc/log:lineage.c:				lineage_const_string_type);
+gcc/log:lineage.c:			lineage_make_builtin(FUNCTION_DECL, "inst_vec_debug",
+gcc/log:lineage.c:		tree lineage_random_rounding_mode_fntype;
+gcc/log:lineage.c:		lineage_random_rounding_mode_fntype = 
+gcc/log:lineage.c:		lineage_random_rounding_mode_fndecl = 
+gcc/log:lineage.c:			lineage_make_builtin(FUNCTION_DECL, "lineage_random_rounding_mode",
+gcc/log:lineage.c:				lineage_random_rounding_mode_fntype);
+gcc/log:lineage.c:		tree lineage_random_last_bit_fntype;
+gcc/log:lineage.c:		lineage_random_last_bit_fntype = 
+gcc/log:lineage.c:		lineage_random_last_bit_fndecl = 
+gcc/log:lineage.c:			lineage_make_builtin(FUNCTION_DECL, "lineage_random_last_bit",
+gcc/log:lineage.c:				lineage_random_last_bit_fntype);
+gcc/log:lineage.c:lineage_get_addr_plus_8 (gimple_seq *seq_p, tree addr, location_t location)
+gcc/log:lineage.c:	addr_op1_0 = lineage_decls_mark (
+gcc/log:lineage.c:	addr_op1_8 = lineage_decls_mark (
+gcc/log:lineage.c:lineage_get_imag (gimple_seq *seq_p, tree decl, tree addr, location_t location)
+gcc/log:lineage.c:		addr_op1_8 = lineage_get_addr_plus_8 (seq_p, addr, location);
+gcc/log:lineage.c:		tree_imag = lineage_gen_get_shadow (seq_p, decl, addr_op1_8, location);
+gcc/log:lineage.c:/* This struct is passed between lineage_xform_decls to store state needed
+gcc/log:lineage.c:struct lineage_xform_decls_data
+gcc/log:lineage.c:lineage_mark_seq (gimple_stmt_iterator *gsi,
+gcc/log:lineage.c:	lineage_stmts_mark (stmt);
+gcc/log:lineage.c:static void lineage_dump_op_name(tree op)
+gcc/log:lineage.c:static void lineage_dump_stmt(gimple gs)
+gcc/log:lineage.c:			lineage_dump_op_name(op);
+gcc/log:lineage.c:static tree lineage_get_last_def(gimple_stmt_iterator *gsi, tree var)
+gcc/log:lineage.c:static tree lineage_get_decl_var_rec(
+gcc/log:lineage.c:						if (prhs = lineage_get_decl_var_rec(pSeq->prev, prhs))
+gcc/log:lineage.c:					return lineage_get_decl_var_rec(pSeq->prev, var);
+gcc/log:lineage.c:lineage_assert(gimple_seq *seq, location_t location, 
+gcc/log:lineage.c:	g = gimple_build_call(lineage_force_exit_fndecl, 1, 
+gcc/log:lineage.c:		lineage_build_string(detail_decl_info(lhs, location)));
+gcc/log:lineage.c:lineage_inline_vec_debug(gimple_seq *seq0_p, gimple_seq *seq2_p, 
+gcc/log:lineage.c:		lineage_build_string(detail_decl_info(op0, location)));
+gcc/log:lineage.c:		g = lineage_stmts_mark (gimple_build_bind (NULL, seq2, NULL));
+gcc/log:lineage.c:		walk_gimple_seq (*seq2_p, lineage_mark_seq, NULL, &wi);
+gcc/log:lineage.c:lineage_inline_plus_minus(gimple_seq *seq0_p, gimple_seq *seq2_p, 
+gcc/log:lineage.c:			op1_copy = lineage_decls_mark(
+gcc/log:lineage.c:			g = lineage_stmts_mark(gimple_build_assign(op1_copy, 
+gcc/log:lineage.c:			vop0_ptr = lineage_decls_mark (
+gcc/log:lineage.c:			op0_ptr = lineage_decls_mark (
+gcc/log:lineage.c:			vop1_ptr = lineage_decls_mark (
+gcc/log:lineage.c:			op1_ptr = lineage_decls_mark (
+gcc/log:lineage.c:			exp0 = lineage_decls_mark (
+gcc/log:lineage.c:			exp1 = lineage_decls_mark(
+gcc/log:lineage.c:			/*exp2 = lineage_decls_mark(
+gcc/log:lineage.c:				g = gimple_build_call(lineage_print_value_fndecl, 2, delta,
+gcc/log:lineage.c:					lineage_build_string(
+gcc/log:lineage.c:				lineage_assert(&seq2, location, LE_EXPR,
+gcc/log:lineage.c:				g = gimple_build_call(lineage_random_rounding_mode_fndecl, 0);
+gcc/log:lineage.c:				g = gimple_build_call(lineage_random_last_bit_fndecl, 1,
+gcc/log:lineage.c:				g = gimple_build_call(lineage_record_op_fndecl, 1,
+gcc/log:lineage.c:					lineage_build_string(
+gcc/log:lineage.c:				op1_copy = lineage_decls_mark(
+gcc/log:lineage.c:				g = lineage_stmts_mark(gimple_build_assign(op1_copy, 
+gcc/log:lineage.c:				op1_ptr = lineage_decls_mark(
+gcc/log:lineage.c:				op2_ptr = lineage_decls_mark(
+gcc/log:lineage.c:				op1_exp = lineage_decls_mark(
+gcc/log:lineage.c:				op2_exp = lineage_decls_mark(
+gcc/log:lineage.c:					g = gimple_build_call(lineage_acc_err_fndecl, 5, 
+gcc/log:lineage.c:							lineage_build_string(
+gcc/log:lineage.c:				op0_ptr = lineage_decls_mark(
+gcc/log:lineage.c:				op0_exp = lineage_decls_mark(
+gcc/log:lineage.c:					g = gimple_build_call(lineage_large_cancel_fndecl, 6, 
+gcc/log:lineage.c:							lineage_build_string(
+gcc/log:lineage.c:				g = gimple_build_call(lineage_random_rounding_mode_fndecl, 0);
+gcc/log:lineage.c:		g = lineage_stmts_mark (gimple_build_bind (NULL, seq0, NULL));
+gcc/log:lineage.c:		g = lineage_stmts_mark (gimple_build_bind (NULL, seq2, NULL));
+gcc/log:lineage.c:		walk_gimple_seq (*seq0_p, lineage_mark_seq, NULL, &wi);
+gcc/log:lineage.c:		walk_gimple_seq (*seq2_p, lineage_mark_seq, NULL, &wi);
+gcc/log:lineage.c:lineage_inline_rdiv(gimple_stmt_iterator *gsi, gimple_seq *seq0_p, 
+gcc/log:lineage.c:	   (lastDef = lineage_get_last_def(gsi, op2)) &&
+gcc/log:lineage.c:			vop2_ptr = lineage_decls_mark(create_tmp_var(
+gcc/log:lineage.c:			op2_tmp = lineage_decls_mark(create_tmp_var(
+gcc/log:lineage.c:			op2_ptr1 = lineage_decls_mark(create_tmp_var(
+gcc/log:lineage.c:			op2_ptr2 = lineage_decls_mark(create_tmp_var(
+gcc/log:lineage.c:			op2_ptr3 = lineage_decls_mark(create_tmp_var(
+gcc/log:lineage.c:			double_tmp = lineage_decls_mark(create_tmp_var(
+gcc/log:lineage.c:		g = lineage_stmts_mark (gimple_build_bind (NULL, seq0, NULL));
+gcc/log:lineage.c:		g = lineage_stmts_mark (gimple_build_bind (NULL, seq2, NULL));
+gcc/log:lineage.c:		walk_gimple_seq (*seq0_p, lineage_mark_seq, NULL, &wi);
+gcc/log:lineage.c:		walk_gimple_seq (*seq2_p, lineage_mark_seq, NULL, &wi);
+gcc/log:lineage.c:lineage_inline_check_nan(gimple_seq *seq0_p, gimple_seq *seq2_p, 
+gcc/log:lineage.c:			vop0_ptr = lineage_decls_mark(create_tmp_var(
+gcc/log:lineage.c:			op0_tmp = lineage_decls_mark(create_tmp_var(
+gcc/log:lineage.c:		g = lineage_stmts_mark (gimple_build_bind (NULL, seq0, NULL));
+gcc/log:lineage.c:		g = lineage_stmts_mark (gimple_build_bind (NULL, seq2, NULL));
+gcc/log:lineage.c:		walk_gimple_seq (*seq0_p, lineage_mark_seq, NULL, &wi);
+gcc/log:lineage.c:		walk_gimple_seq (*seq2_p, lineage_mark_seq, NULL, &wi);
+gcc/log:lineage.c:lineage_get_array_addr(const tree decl, gimple_seq *seq_p, location_t location)
+gcc/log:lineage.c:	tree t1 = lineage_decls_mark (create_tmp_var (
+gcc/log:lineage.c:	walk_gimple_seq (*seq_p, lineage_mark_seq, NULL, &wi);
+gcc/log:lineage.c:lineage_get_component_addr (const tree decl, gimple_seq *seq_p, location_t location)
+gcc/log:lineage.c:	tree t1 = lineage_decls_mark (create_tmp_var (
+gcc/log:lineage.c:	walk_gimple_seq (*seq_p, lineage_mark_seq, NULL, &wi);
+gcc/log:lineage.c:lineage_xfn_xform_fn_gimple_assign(gimple_stmt_iterator *gsi, gimple stmt)
+gcc/log:lineage.c:					g = gimple_build_call(lineage_check_equal_fndecl, 2, 
+gcc/log:lineage.c:						t, lineage_build_string(detail_decl_info(op0, location)));
+gcc/log:lineage.c:					g = lineage_stmts_mark (gimple_build_bind (NULL, seq, NULL));
+gcc/log:lineage.c:						walk_gimple_seq (seq_after, lineage_mark_seq, NULL, &wi);
+gcc/log:lineage.c:					lineage_inline_plus_minus (&seq_before, &seq_after, 
+gcc/log:lineage.c:				} else if (flag_lineage_galgel &&
+gcc/log:lineage.c:					lineage_inline_check_nan (&seq_before, &seq_after, 
+gcc/log:lineage.c:static tree lineage_search_match_label(tree label, location_t loc)
+gcc/log:lineage.c:static gimple lineage_handle_stmt(gimple stmt, 
+gcc/log:lineage.c:			tree new_t_label = lineage_search_match_label(t_label, loc);
+gcc/log:lineage.c:			tree new_f_label = lineage_search_match_label(f_label, loc);
+gcc/log:lineage.c:			tree new_label = lineage_search_match_label(label, loc);
+gcc/log:lineage.c:						lineage_search_match_label(goto_label, loc);
+gcc/log:lineage.c:static int lineage_bypass_func()
+gcc/log:lineage.c:	if (flag_lineage_kmeans) {
+gcc/log:lineage.c:	if (flag_lineage_deisotope || flag_lineage_galgel) {
+gcc/log:lineage.c:lineage_handle_concore(gimple_stmt_iterator *gsi, gimple_seq *seq2, 
+gcc/log:lineage.c:	if (label_diff > 1 || lineage_bypass_func())
+gcc/log:lineage.c:		g = lineage_handle_stmt(stmt, pSeqNode, f_label);
+gcc/log:lineage.c:		g = gimple_build_call(lineage_check_concore_fndecl, 5, 
+gcc/log:lineage.c:				lineage_build_string(detail_decl_info(lhs, location)));
+gcc/log:lineage.c:		g = lineage_stmts_mark (gimple_build_bind (NULL, seq, NULL));
+gcc/log:lineage.c:lineage_patch_predicate256(gimple_stmt_iterator *gsi, gimple stmt)
+gcc/log:lineage.c:			lineage_get_decl_var_rec(gsi->ptr->prev, vlhs) : 
+gcc/log:lineage.c:			lineage_get_decl_var_rec(gsi->ptr->prev, vrhs) : 
+gcc/log:lineage.c:		lhs_v1 = lineage_decls_mark(create_tmp_var(
+gcc/log:lineage.c:		lhs_v2 = lineage_decls_mark(create_tmp_var(
+gcc/log:lineage.c:		lhs_v3 = lineage_decls_mark(create_tmp_var(
+gcc/log:lineage.c:		lhs_ptr = lineage_decls_mark (create_tmp_var (
+gcc/log:lineage.c:		rhs_v1 = lineage_decls_mark (create_tmp_var (
+gcc/log:lineage.c:		rhs_v2 = lineage_decls_mark (create_tmp_var (
+gcc/log:lineage.c:		rhs_v3 = lineage_decls_mark (create_tmp_var (
+gcc/log:lineage.c:		rhs_ptr = lineage_decls_mark (create_tmp_var (
+gcc/log:lineage.c:		 * lineage_spawn, else continue execution.
+gcc/log:lineage.c:		lineage_handle_concore(gsi, &seq2, label_check_and_set_done);
+gcc/log:lineage.c:		g = gimple_build_call(lineage_spawn_fndecl, 6, 
+gcc/log:lineage.c:				lineage_build_string(detail_decl_info(vlhs, location)));
+gcc/log:lineage.c:		walk_gimple_seq (seq2, lineage_mark_seq, NULL, &wi);
+gcc/log:lineage.c:		g = lineage_stmts_mark (gimple_build_bind (NULL, seq2, NULL));
+gcc/log:lineage.c:lineage_patch_predicate256(gimple_stmt_iterator *gsi, gimple stmt)
+gcc/log:lineage.c:		lhs_v1 = lineage_decls_mark(create_tmp_var(
+gcc/log:lineage.c:		lhs_ptr = lineage_decls_mark (create_tmp_var (
+gcc/log:lineage.c:		rhs_v1 = lineage_decls_mark (create_tmp_var (
+gcc/log:lineage.c:		rhs_ptr = lineage_decls_mark (create_tmp_var (
+gcc/log:lineage.c:		walk_gimple_seq (seq2, lineage_mark_seq, NULL, &wi);
+gcc/log:lineage.c:		g = lineage_stmts_mark (gimple_build_bind (NULL, seq2, NULL));
+gcc/log:lineage.c:lineage_xfn_xform_fn_gimple_call(gimple_stmt_iterator *gsi, gimple stmt)
+gcc/log:lineage.c:	if (lineage_stmts_marked_p(stmt))
+gcc/log:lineage.c:lineage_xfn_xform_fn (gimple_stmt_iterator *gsi,
+gcc/log:lineage.c:	struct lineage_xform_decls_data *d = 
+gcc/log:lineage.c:		(struct lineage_xform_decls_data *) wi->info;
+gcc/log:lineage.c:	if (lineage_stmts_marked_p (stmt))
+gcc/log:lineage.c:			lineage_stmts_marked_p (stmt));
+gcc/log:lineage.c:			lineage_xfn_xform_fn_gimple_assign (gsi, stmt);
+gcc/log:lineage.c:			lineage_xfn_xform_fn_gimple_call (gsi, stmt);
+gcc/log:lineage.c:			 * The rest are done in lineage-fp.c (VEC)
+gcc/log:lineage.c:lineage_xform_fn(gimple_seq fnbody, tree fnparams)
+gcc/log:lineage.c:	struct lineage_xform_decls_data d;
+gcc/log:lineage.c:	walk_gimple_seq (fnbody, lineage_xfn_xform_fn, NULL, &wi);
+gcc/log:lineage.c:lineage_finish_file (void)
+gcc/log:lineage.c:	/* Insert a call to __lineage_init.  */
+gcc/log:lineage.c:			build_call_expr(lineage_init_fndecl, 1, 
+gcc/log:lineage.c:	/* Insert a call to __lineage_fini.  */
+gcc/log:lineage.c:		tree call2_stmt = build_call_expr (lineage_fini_fndecl, 0);
+gcc/log:lineage.c:static unsigned int do_lineage (void)
+gcc/log:lineage.c:	fprintf (stderr, ";; [do_lineage] %s\n", decl_name);
+gcc/log:lineage.c:	lineage_xform_fn (gimple_body (current_function_decl),
+gcc/log:lineage.c:gate_lineage (void)
+gcc/log:lineage.c:	return (flag_lineage != 0);
+gcc/log:lineage.c:struct gimple_opt_pass pass_lineage =
+gcc/log:lineage.c:		"lineage",                    /* name */
+gcc/log:lineage.c:		gate_lineage,                 /* gate */
+gcc/log:lineage.c:		do_lineage,                   /* execute */
+gcc/log:lineage.c:struct gimple_opt_pass pass_pre_lineage =
+gcc/log:lineage.c:		"prelineage",                 /* name */
+gcc/log:lineage.c:		gate_lineage,                 /* gate */
+gcc/log:lineage.h:extern void lineage_init (void);
+gcc/log:lineage.h:extern void lineage_fp_init (void);
+gcc/log:lineage.h:extern void lineage_finish_file (void);
+gcc/log:lineage.h:extern void lineage_patch_predicate256 (gimple_stmt_iterator *, gimple);
+gcc/log:passes.c:  NEXT_PASS (pass_pre_lineage);
+gcc/log:passes.c:  NEXT_PASS (pass_lineage_fp);
+gcc/log:passes.c:  NEXT_PASS (pass_lineage);
+gcc/log:test.c.001t.tu:@5220   identifier_node  strg: lineage_patch_plus      lngt: 18      
+gcc/log:test.c.001t.tu:@5293   identifier_node  strg: lineage_patch_minus     lngt: 19      
+gcc/log:test.c.001t.tu:@5364   identifier_node  strg: lineage_patch_predicate_1 
+gcc/log:test.c.001t.tu:@5431   identifier_node  strg: lineage_allocate        lngt: 16      
+gcc/log:test.c.001t.tu:@5485   identifier_node  strg: lineage_get_shadow      lngt: 18      
+gcc/log:test.c.001t.tu:@5534   identifier_node  strg: lineage_write_shadow    lngt: 20      
+gcc/log:test.c.001t.tu:@5581   identifier_node  strg: lineage_cp_shadow       lngt: 17      
+gcc/log:test.c.001t.tu:@5627   identifier_node  strg: lineage_assign_abs_expr lngt: 23      
+gcc/log:test.c.001t.tu:@5682   identifier_node  strg: lineage_assign_nop_expr lngt: 23      
+gcc/log:test.c.001t.tu:@5736   identifier_node  strg: lineage_assign_negate_expr 
+gcc/log:test.c.001t.tu:@5780   identifier_node  strg: lineage_assign_var_decl lngt: 23      
+gcc/log:test.c.001t.tu:@5824   identifier_node  strg: lineage_assign_var_decl_f 
+gcc/log:test.c.001t.tu:@5876   identifier_node  strg: lineage_assign_negate_expr_f 
+gcc/log:test.c.001t.tu:@5927   identifier_node  strg: lineage_assign_abs_expr_f 
+gcc/log:test.c.001t.tu:@5977   identifier_node  strg: lineage_assign_nop_expr_f 
+gcc/log:test.c.001t.tu:@6026   identifier_node  strg: lineage_assign_abs_expr_c 
+gcc/log:test.c.001t.tu:@6079   identifier_node  strg: lineage_assign_nop_expr_c 
+gcc/log:test.c.001t.tu:@6130   identifier_node  strg: lineage_assign_negate_expr_c 
+gcc/log:test.c.001t.tu:@6181   identifier_node  strg: lineage_assign_conj_expr_c 
+gcc/log:test.c.001t.tu:@6232   identifier_node  strg: lineage_assign_var_decl_c 
+gcc/log:test.c.001t.tu:@6283   identifier_node  strg: lineage_assign_realpart_expr 
+gcc/log:test.c.001t.tu:@6340   identifier_node  strg: lineage_assign_imagpart_expr 
+gcc/log:test.c.001t.tu:@6394   identifier_node  strg: lineage_binop_complex_expr 
+gcc/log:test.c.001t.tu:@6449   identifier_node  strg: lineage_assign_cst_f    lngt: 20      
+gcc/log:test.c.001t.tu:@6503   identifier_node  strg: lineage_assign_cst      lngt: 18      
+gcc/log:test.c.001t.tu:@6557   identifier_node  strg: lineage_assign_cst_c    lngt: 20      
+gcc/log:test.c.001t.tu:@6610   identifier_node  strg: lineage_save_param      lngt: 18      
+gcc/log:test.c.001t.tu:@6663   identifier_node  strg: lineage_save_n_param    lngt: 20      
+gcc/log:test.c.001t.tu:@6715   identifier_node  strg: lineage_load_param      lngt: 18      
+gcc/log:test.c.001t.tu:@6767   identifier_node  strg: lineage_load_n_param    lngt: 20      
+gcc/log:test.c.001t.tu:@6815   identifier_node  strg: lineage_load_return     lngt: 19      
+gcc/log:test.c.001t.tu:@6864   identifier_node  strg: lineage_load_return_c   lngt: 21      
+gcc/log:test.c.001t.tu:@6917   identifier_node  strg: lineage_load_n_return   lngt: 21      
+gcc/log:test.c.001t.tu:@6975   identifier_node  strg: lineage_load_void_return 
+gcc/log:test.c.001t.tu:@7034   identifier_node  strg: lineage_save_return     lngt: 19      
+gcc/log:test.c.001t.tu:@7097   identifier_node  strg: lineage_save_return_c   lngt: 21      
+gcc/log:test.c.001t.tu:@7166   identifier_node  strg: lineage_save_n_return   lngt: 21      
+gcc/log:test.c.001t.tu:@7239   identifier_node  strg: lineage_get_id          lngt: 14      
+gcc/log:test.c.001t.tu:@7310   identifier_node  strg: lineage_init            lngt: 12      
+gcc/log:test.c.001t.tu:@7372   identifier_node  strg: lineage_fini            lngt: 12      
+gcc/log:test.c.001t.tu:@7430   identifier_node  strg: lineage_binop_misc      lngt: 18      
+gcc/log:test.c.001t.tu:@7487   identifier_node  strg: lineage_binop_misc_c    lngt: 20      
+gcc/log:test.c.001t.tu:@7545   identifier_node  strg: lineage_binop_plus      lngt: 18      
+gcc/log:test.c.001t.tu:@7601   identifier_node  strg: lineage_binop_minus     lngt: 19      
+gcc/log:test.c.001t.tu:@7665   identifier_node  strg: lineage_binop_mult      lngt: 18      
+gcc/log:test.c.001t.tu:@7737   identifier_node  strg: lineage_binop_rdiv      lngt: 18      
+gcc/log:test.c.001t.tu:@7809   identifier_node  strg: lineage_binop_plus_f    lngt: 20      
+gcc/log:test.c.001t.tu:@7887   identifier_node  strg: lineage_binop_minus_f   lngt: 21      
+gcc/log:test.c.001t.tu:@7960   identifier_node  strg: lineage_binop_mult_f    lngt: 20      
+gcc/log:test.c.001t.tu:@8024   identifier_node  strg: lineage_binop_rdiv_f    lngt: 20      
+gcc/log:test.c.001t.tu:@8075   identifier_node  strg: lineage_binop_plus_c    lngt: 20      
+gcc/log:test.c.001t.tu:@8158   identifier_node  strg: lineage_binop_minus_c   lngt: 21      
+gcc/log:test.c.001t.tu:@8229   identifier_node  strg: lineage_binop_mult_c    lngt: 20      
+gcc/log:test.c.001t.tu:@8297   identifier_node  strg: lineage_binop_rdiv_c    lngt: 20      
+gcc/log:test.c.001t.tu:@8360   identifier_node  strg: lineage_binop_double    lngt: 20      
+gcc/log:test.c.001t.tu:@8418   identifier_node  strg: lineage_binop_complex   lngt: 21      
+gcc/log:test.c.001t.tu:@8487   identifier_node  strg: lineage_binop_float     lngt: 19      
+gcc/log:test.c.001t.tu:@8549   identifier_node  strg: lineage_binop_int       lngt: 17      
+gcc/log:test.c.001t.tu:@8615   identifier_node  strg: lineage_binop_int64     lngt: 19      
+gcc/log:test.c.001t.tu:@8664   identifier_node  strg: lineage_binop_bool      lngt: 18      
+gcc/log:test.c.001t.tu:@8712   identifier_node  strg: lineage_binop_bool_f    lngt: 20      
+gcc/log:test.c.001t.tu:@8762   identifier_node  strg: lineage_binop_fast_check 
+gcc/log:test.c.001t.tu:@8810   identifier_node  strg: lineage_binop_fast_check_with_shadows 
+gcc/log:test.c.001t.tu:@8855   identifier_node  strg: lineage_binop_fast_check_plus 
+gcc/log:test.c.001t.tu:@8902   identifier_node  strg: lineage_binop_fast_check_minus 
+gcc/log:test.c.001t.tu:@8948   identifier_node  strg: lineage_binop_fast_check_plus_f 
+gcc/log:test.c.001t.tu:@8995   identifier_node  strg: lineage_binop_fast_check_minus_f 
+gcc/log:test.c.001t.tu:@9046   identifier_node  strg: lineage_binop_fast_check_f 
+gcc/log:test.c.001t.tu:@9102   identifier_node  strg: lineage_union           lngt: 13      
+gcc/log:test.c.001t.tu:@9164   identifier_node  strg: lineage_binop_fast_check_predicate 
+gcc/log:test.c.001t.tu:@9207   identifier_node  strg: lineage_predicate       lngt: 17      
+gcc/log:test.c.001t.tu:@9250   identifier_node  strg: lineage_predicate_f     lngt: 19      
+gcc/log:test.c.001t.tu:@9291   identifier_node  strg: lineage_ckp_d           lngt: 13      
+gcc/log:test.c.001t.tu:@9333   identifier_node  strg: lineage_ckp_i           lngt: 13      
+gcc/log:test.c.001t.tu:@9374   identifier_node  strg: lineage_ckp_b           lngt: 13      
+gcc/log:test.c.001t.tu:@9419   identifier_node  strg: lineage_p               lngt: 9       
+gcc/log:test.c.001t.tu:@9459   identifier_node  strg: lineage_p_char          lngt: 14      
+gcc/log:test.c.001t.tu:@9496   identifier_node  strg: lineage_p_float         lngt: 15      
+gcc/log:test.c.001t.tu:@9533   identifier_node  strg: lineage_p_double        lngt: 16      
+gcc/log:test.c.001t.tu:@9570   identifier_node  strg: lineage_p_entry         lngt: 15      
+gcc/log:test.c.001t.tu:@9606   identifier_node  strg: lineage_p_exit          lngt: 14      
+gcc/log:test.c.001t.tu:@9647   identifier_node  strg: lineage_matmul          lngt: 14      
+gcc/log:test.c.001t.tu:@9685   identifier_node  strg: lineage_sin             lngt: 11      
+gcc/log:test.c.001t.tu:@9724   identifier_node  strg: lineage_cos             lngt: 11      
+gcc/log:test.c.001t.tu:@9755   identifier_node  strg: lineage_atan            lngt: 12      
+gcc/log:test.c.001t.tu:@9790   identifier_node  strg: lineage_atan2           lngt: 13      
+gcc/log:test.c.001t.tu:@9827   identifier_node  strg: lineage_fmod            lngt: 12      
+gcc/log:test.c.001t.tu:@9863   identifier_node  strg: lineage_pow             lngt: 11      
+gcc/log:test.c.001t.tu:@9888   identifier_node  strg: lineage_powi            lngt: 12      
+gcc/log:test.c.001t.tu:@9914   identifier_node  strg: lineage_acos            lngt: 12      
+gcc/log:test.c.001t.tu:@9944   identifier_node  strg: lineage_sqrt            lngt: 12      
+gcc/log:test.c.001t.tu:@9981   identifier_node  strg: lineage_log             lngt: 11      
+gcc/log:test.c.001t.tu:@10013  identifier_node  strg: lineage_reset           lngt: 13      
+gcc/log:test.c.001t.tu:@10046  identifier_node  strg: lineage_cabs            lngt: 12      
+gcc/log:test.c.001t.tu:@10078  identifier_node  strg: lineage_trunc           lngt: 13      
+gcc/log:test.c.001t.tu:@10117  identifier_node  strg: lineage_exp             lngt: 11      
+gcc/log:test.c.001t.tu:@10156  identifier_node  strg: lineage_copysign        lngt: 16      
+gcc/log:test.c.001t.tu:@10191  identifier_node  strg: lineage_sign            lngt: 12      
+gcc/log:test.c.001t.tu:@10225  identifier_node  strg: lineage_register_main   lngt: 21      
+gcc/log:test.c.001t.tu:@10253  identifier_node  strg: lineage_debug_fname     lngt: 19      
+gcc/log:test.c.001t.tu:@10282  identifier_node  strg: lineage_fread           lngt: 13      
+gcc/log:test.c.001t.tu:@10320  identifier_node  strg: lineage_write           lngt: 13      
+gcc/log:test.c.001t.tu:@10355  identifier_node  strg: lineage_print_value     lngt: 19      
+gcc/log:test.c.001t.tu:@10386  identifier_node  strg: lineage_spawn           lngt: 13      
+gcc/log:test.c.004t.gimple:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.004t.gimple:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.008t.prelineage:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.008t.prelineage:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.009t.lineagefp:        gimple_call <lineage_spawn, __rtn_v1.10, __rtn_v1.10, __rtn_v2.11, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.009t.lineagefp:        gimple_call <lineage_spawn, __rtn_v1.23, __rtn_v1.23, __rtn_v2.24, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.009t.lineagefp:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.009t.lineagefp:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.010t.lineage:        gimple_call <lineage_spawn, __rtn_v1.10, __rtn_v1.10, __rtn_v2.11, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.010t.lineage:        gimple_call <lineage_spawn, __rtn_v1.23, __rtn_v1.23, __rtn_v2.24, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.010t.lineage:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.010t.lineage:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.012t.omplower:        gimple_call <lineage_spawn, __rtn_v1.10, __rtn_v1.10, __rtn_v2.11, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.012t.omplower:        gimple_call <lineage_spawn, __rtn_v1.23, __rtn_v1.23, __rtn_v2.24, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.012t.omplower:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.012t.omplower:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.013t.lower:      gimple_call <lineage_spawn, __rtn_v1.10, __rtn_v1.10, __rtn_v2.11, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.013t.lower:      gimple_call <lineage_spawn, __rtn_v1.23, __rtn_v1.23, __rtn_v2.24, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.013t.lower:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.013t.lower:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.016t.eh:  gimple_call <lineage_spawn, __rtn_v1.10, __rtn_v1.10, __rtn_v2.11, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.016t.eh:  gimple_call <lineage_spawn, __rtn_v1.23, __rtn_v1.23, __rtn_v2.24, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.016t.eh:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.016t.eh:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.017t.cfg:  gimple_call <lineage_spawn, __rtn_v1.10, __rtn_v1.10, __rtn_v2.11, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.017t.cfg:  gimple_call <lineage_spawn, __rtn_v1.23, __rtn_v1.23, __rtn_v2.24, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.017t.cfg:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.017t.cfg:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.021t.ssa:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.021t.ssa:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.021t.ssa:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.021t.ssa:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.023t.inline_param1:    lineage_spawn/813 function body not available
+gcc/log:test.c.023t.inline_param1:    lineage_spawn/813 function body not available
+gcc/log:test.c.023t.inline_param1:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.023t.inline_param1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.023t.inline_param1:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.023t.inline_param1:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.024t.einline:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.024t.einline:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.024t.einline:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.024t.einline:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.025t.early_optimizations:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.025t.early_optimizations:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.025t.early_optimizations:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.025t.early_optimizations:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.026t.copyrename1:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.026t.copyrename1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.026t.copyrename1:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.026t.copyrename1:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.027t.ccp1:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.027t.ccp1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.027t.ccp1:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.027t.ccp1:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.028t.forwprop1:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.028t.forwprop1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.028t.forwprop1:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.028t.forwprop1:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.029t.ealias:lineage_spawn = { }
+gcc/log:test.c.029t.ealias:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.029t.ealias:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.029t.ealias:lineage_init = { }
+gcc/log:test.c.029t.ealias:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.029t.ealias:lineage_fini = { }
+gcc/log:test.c.029t.ealias:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.030t.esra:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.030t.esra:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.030t.esra:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.030t.esra:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.031t.fre1:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.031t.fre1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.031t.fre1:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.031t.fre1:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.032t.copyprop1:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.032t.copyprop1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.032t.copyprop1:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.032t.copyprop1:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.033t.mergephi1:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.033t.mergephi1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.033t.mergephi1:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.033t.mergephi1:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.034t.cddce1:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.034t.cddce1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.034t.cddce1:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.034t.cddce1:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.035t.eipa_sra:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.035t.eipa_sra:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.035t.eipa_sra:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.035t.eipa_sra:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.036t.tailr1:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.036t.tailr1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.036t.tailr1:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.036t.tailr1:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.037t.switchconv:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.037t.switchconv:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.037t.switchconv:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.037t.switchconv:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.039t.profile_estimate:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.039t.profile_estimate:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.039t.profile_estimate:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.039t.profile_estimate:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.040t.local-pure-const1:  scanning: __rtn_v1.10_36 = lineage_spawn (__rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1");
+gcc/log:test.c.040t.local-pure-const1:  scanning: __rtn_v1.23_55 = lineage_spawn (__rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1");
+gcc/log:test.c.040t.local-pure-const1:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.040t.local-pure-const1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.040t.local-pure-const1:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.040t.local-pure-const1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.040t.local-pure-const1:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.040t.local-pure-const1:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.041t.fnsplit:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.041t.fnsplit:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.041t.fnsplit:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.041t.fnsplit:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.042t.release_ssa:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.042t.release_ssa:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.042t.release_ssa:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.042t.release_ssa:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.043t.inline_param2:    lineage_spawn/813 function body not available
+gcc/log:test.c.043t.inline_param2:    lineage_spawn/813 function body not available
+gcc/log:test.c.043t.inline_param2:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.043t.inline_param2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.043t.inline_param2:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.043t.inline_param2:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.061t.copyrename2:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.061t.copyrename2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.061t.copyrename2:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.061t.copyrename2:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.062t.cunrolli:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.062t.cunrolli:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.062t.cunrolli:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.062t.cunrolli:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.063t.ccp2:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.063t.ccp2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.063t.ccp2:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.063t.ccp2:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.064t.forwprop2:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.064t.forwprop2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.064t.forwprop2:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.064t.forwprop2:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.065t.cdce:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.065t.cdce:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.065t.cdce:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.065t.cdce:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.066t.alias:lineage_spawn = { }
+gcc/log:test.c.066t.alias:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.066t.alias:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.066t.alias:lineage_init = { }
+gcc/log:test.c.066t.alias:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.066t.alias:lineage_fini = { }
+gcc/log:test.c.066t.alias:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.067t.retslot:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.067t.retslot:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.067t.retslot:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.067t.retslot:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.068t.phiprop:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.068t.phiprop:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.068t.phiprop:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.068t.phiprop:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.069t.fre2:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.069t.fre2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.069t.fre2:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.069t.fre2:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.070t.copyprop2:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.070t.copyprop2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.070t.copyprop2:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.070t.copyprop2:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.071t.mergephi2:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.071t.mergephi2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.071t.mergephi2:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.071t.mergephi2:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.072t.vrp1:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.072t.vrp1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.072t.vrp1:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.072t.vrp1:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.073t.dce1:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.073t.dce1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.073t.dce1:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.073t.dce1:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.074t.cselim:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.074t.cselim:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.074t.cselim:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.074t.cselim:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.075t.ifcombine:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.075t.ifcombine:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.075t.ifcombine:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.075t.ifcombine:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.076t.phiopt1:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.076t.phiopt1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.076t.phiopt1:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.076t.phiopt1:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.077t.tailr2:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.077t.tailr2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.077t.tailr2:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.077t.tailr2:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.078t.ch:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.078t.ch:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.078t.ch:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.078t.ch:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.080t.cplxlower:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.080t.cplxlower:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.080t.cplxlower:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.080t.cplxlower:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.081t.sra:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.081t.sra:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.081t.sra:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.081t.sra:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.082t.copyrename3:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.082t.copyrename3:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.082t.copyrename3:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.082t.copyrename3:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.083t.dom1:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.083t.dom1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.083t.dom1:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.083t.dom1:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.084t.phicprop1:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.084t.phicprop1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.084t.phicprop1:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.084t.phicprop1:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.085t.dse1:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.085t.dse1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.085t.dse1:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.085t.dse1:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.086t.reassoc1:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.086t.reassoc1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.086t.reassoc1:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.086t.reassoc1:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.087t.dce2:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.087t.dce2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.087t.dce2:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.087t.dce2:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.088t.forwprop3:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.088t.forwprop3:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.088t.forwprop3:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.088t.forwprop3:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.089t.phiopt2:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.089t.phiopt2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.089t.phiopt2:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.089t.phiopt2:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.090t.objsz:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.090t.objsz:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.090t.objsz:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.090t.objsz:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.091t.strlen:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.091t.strlen:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.091t.strlen:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.091t.strlen:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.092t.ccp3:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.092t.ccp3:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.092t.ccp3:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.092t.ccp3:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.093t.copyprop3:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.093t.copyprop3:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.093t.copyprop3:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.093t.copyprop3:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.094t.sincos:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.094t.sincos:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.094t.sincos:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.094t.sincos:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.095t.bswap:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.095t.bswap:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.095t.bswap:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.095t.bswap:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.096t.crited:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.096t.crited:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.096t.crited:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.096t.crited:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.097t.pre:lineage_spawn = { }
+gcc/log:test.c.097t.pre:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.097t.pre:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.097t.pre:lineage_init = { }
+gcc/log:test.c.097t.pre:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.097t.pre:lineage_fini = { }
+gcc/log:test.c.097t.pre:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.098t.sink:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.098t.sink:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.098t.sink:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.098t.sink:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.099t.loop:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.099t.loop:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.099t.loop:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.099t.loop:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.100t.loopinit:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.100t.loopinit:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.100t.loopinit:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.100t.loopinit:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.101t.lim1:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.101t.lim1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.101t.lim1:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.101t.lim1:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.102t.copyprop4:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.102t.copyprop4:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.102t.copyprop4:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.102t.copyprop4:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.103t.dceloop1:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.103t.dceloop1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.103t.dceloop1:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.103t.dceloop1:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.104t.unswitch:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.104t.unswitch:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.104t.unswitch:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.104t.unswitch:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.105t.sccp:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.105t.sccp:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.105t.sccp:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.105t.sccp:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.107t.ldist:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.107t.ldist:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.107t.ldist:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.107t.ldist:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.108t.copyprop5:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.108t.copyprop5:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.108t.copyprop5:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.108t.copyprop5:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.114t.ivcanon:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.114t.ivcanon:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.114t.ivcanon:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.114t.ivcanon:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.115t.ifcvt:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.115t.ifcvt:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.115t.ifcvt:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.115t.ifcvt:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.116t.vect:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.116t.vect:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.116t.vect:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.116t.vect:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.117t.dceloop3:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.117t.dceloop3:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.117t.dceloop3:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.117t.dceloop3:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.118t.pcom:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.118t.pcom:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.118t.pcom:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.118t.pcom:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.119t.cunroll:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.119t.cunroll:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.119t.cunroll:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.119t.cunroll:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.120t.slp:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.120t.slp:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.120t.slp:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.120t.slp:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.123t.ivopts:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.123t.ivopts:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.123t.ivopts:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.123t.ivopts:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.124t.lim3:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.124t.lim3:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.124t.lim3:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.124t.lim3:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.125t.loopdone:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.125t.loopdone:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.125t.loopdone:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.125t.loopdone:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.126t.veclower2:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.126t.veclower2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.126t.veclower2:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.126t.veclower2:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.128t.reassoc2:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.128t.reassoc2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.128t.reassoc2:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.128t.reassoc2:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.129t.vrp2:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.129t.vrp2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.129t.vrp2:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.129t.vrp2:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.130t.dom2:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.130t.dom2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.130t.dom2:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.130t.dom2:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.131t.phicprop2:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.131t.phicprop2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.131t.phicprop2:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.131t.phicprop2:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.132t.cddce2:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.132t.cddce2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.132t.cddce2:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.132t.cddce2:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.135t.dse2:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.135t.dse2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.135t.dse2:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.135t.dse2:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.136t.forwprop4:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.136t.forwprop4:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.136t.forwprop4:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.136t.forwprop4:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.137t.phiopt3:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.137t.phiopt3:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.137t.phiopt3:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.137t.phiopt3:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.138t.fab:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.138t.fab:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.138t.fab:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.138t.fab:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.139t.widening_mul:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.139t.widening_mul:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.139t.widening_mul:  gimple_call <lineage_init, NULL>
+gcc/log:test.c.139t.widening_mul:  gimple_call <lineage_fini, NULL>
+gcc/log:test.c.140t.tailc:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.140t.tailc:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.140t.tailc:  gimple_call <lineage_init, NULL> [tail call]
+gcc/log:test.c.140t.tailc:  gimple_call <lineage_fini, NULL> [tail call]
+gcc/log:test.c.141t.copyrename4:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.141t.copyrename4:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.141t.copyrename4:  gimple_call <lineage_init, NULL> [tail call]
+gcc/log:test.c.141t.copyrename4:  gimple_call <lineage_fini, NULL> [tail call]
+gcc/log:test.c.142t.uncprop:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.142t.uncprop:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.142t.uncprop:  gimple_call <lineage_init, NULL> [tail call]
+gcc/log:test.c.142t.uncprop:  gimple_call <lineage_fini, NULL> [tail call]
+gcc/log:test.c.143t.local-pure-const2:  scanning: __rtn_v1.10_36 = lineage_spawn (0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1");
+gcc/log:test.c.143t.local-pure-const2:  scanning: __rtn_v1.23_55 = lineage_spawn (__rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1");
+gcc/log:test.c.143t.local-pure-const2:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.143t.local-pure-const2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.143t.local-pure-const2:   scanning: lineage_init (); [tail call]
+gcc/log:test.c.143t.local-pure-const2:  gimple_call <lineage_init, NULL> [tail call]
+gcc/log:test.c.143t.local-pure-const2:  gimple_call <lineage_init, NULL> [tail call]
+gcc/log:test.c.143t.local-pure-const2:   scanning: lineage_fini (); [tail call]
+gcc/log:test.c.143t.local-pure-const2:  gimple_call <lineage_fini, NULL> [tail call]
+gcc/log:test.c.143t.local-pure-const2:  gimple_call <lineage_fini, NULL> [tail call]
+gcc/log:test.c.150t.nrv:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.150t.nrv:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.150t.nrv:  gimple_call <lineage_init, NULL> [tail call]
+gcc/log:test.c.150t.nrv:  gimple_call <lineage_fini, NULL> [tail call]
+gcc/log:test.c.152t.optimized:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/log:test.c.152t.optimized:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/log:test.c.152t.optimized:  gimple_call <lineage_init, NULL> [tail call]
+gcc/log:test.c.152t.optimized:  gimple_call <lineage_fini, NULL> [tail call]
+gcc/log:toplev.c:#include "lineage.h"
+gcc/log:toplev.c:      if (flag_lineage)
+gcc/log:toplev.c:        lineage_finish_file ();
+gcc/log:tree-pass.h:extern struct gimple_opt_pass pass_pre_lineage;
+gcc/log:tree-pass.h:extern struct gimple_opt_pass pass_lineage_fp;
+gcc/log:tree-pass.h:extern struct gimple_opt_pass pass_lineage;
+gcc/log:tree-pass.h:extern struct gimple_opt_pass pass_cd_lineage;
+gcc/passes.c:  NEXT_PASS (pass_pre_lineage);
+gcc/passes.c:  NEXT_PASS (pass_lineage_fp);
+gcc/passes.c:  NEXT_PASS (pass_lineage);
+Binary file gcc/test matches
+gcc/test.c.001t.tu:@5220   identifier_node  strg: lineage_patch_plus      lngt: 18      
+gcc/test.c.001t.tu:@5293   identifier_node  strg: lineage_patch_minus     lngt: 19      
+gcc/test.c.001t.tu:@5364   identifier_node  strg: lineage_patch_predicate_1 
+gcc/test.c.001t.tu:@5431   identifier_node  strg: lineage_allocate        lngt: 16      
+gcc/test.c.001t.tu:@5485   identifier_node  strg: lineage_get_shadow      lngt: 18      
+gcc/test.c.001t.tu:@5534   identifier_node  strg: lineage_write_shadow    lngt: 20      
+gcc/test.c.001t.tu:@5581   identifier_node  strg: lineage_cp_shadow       lngt: 17      
+gcc/test.c.001t.tu:@5627   identifier_node  strg: lineage_assign_abs_expr lngt: 23      
+gcc/test.c.001t.tu:@5682   identifier_node  strg: lineage_assign_nop_expr lngt: 23      
+gcc/test.c.001t.tu:@5736   identifier_node  strg: lineage_assign_negate_expr 
+gcc/test.c.001t.tu:@5780   identifier_node  strg: lineage_assign_var_decl lngt: 23      
+gcc/test.c.001t.tu:@5824   identifier_node  strg: lineage_assign_var_decl_f 
+gcc/test.c.001t.tu:@5876   identifier_node  strg: lineage_assign_negate_expr_f 
+gcc/test.c.001t.tu:@5927   identifier_node  strg: lineage_assign_abs_expr_f 
+gcc/test.c.001t.tu:@5977   identifier_node  strg: lineage_assign_nop_expr_f 
+gcc/test.c.001t.tu:@6026   identifier_node  strg: lineage_assign_abs_expr_c 
+gcc/test.c.001t.tu:@6079   identifier_node  strg: lineage_assign_nop_expr_c 
+gcc/test.c.001t.tu:@6130   identifier_node  strg: lineage_assign_negate_expr_c 
+gcc/test.c.001t.tu:@6181   identifier_node  strg: lineage_assign_conj_expr_c 
+gcc/test.c.001t.tu:@6232   identifier_node  strg: lineage_assign_var_decl_c 
+gcc/test.c.001t.tu:@6283   identifier_node  strg: lineage_assign_realpart_expr 
+gcc/test.c.001t.tu:@6340   identifier_node  strg: lineage_assign_imagpart_expr 
+gcc/test.c.001t.tu:@6394   identifier_node  strg: lineage_binop_complex_expr 
+gcc/test.c.001t.tu:@6449   identifier_node  strg: lineage_assign_cst_f    lngt: 20      
+gcc/test.c.001t.tu:@6503   identifier_node  strg: lineage_assign_cst      lngt: 18      
+gcc/test.c.001t.tu:@6557   identifier_node  strg: lineage_assign_cst_c    lngt: 20      
+gcc/test.c.001t.tu:@6610   identifier_node  strg: lineage_save_param      lngt: 18      
+gcc/test.c.001t.tu:@6663   identifier_node  strg: lineage_save_n_param    lngt: 20      
+gcc/test.c.001t.tu:@6715   identifier_node  strg: lineage_load_param      lngt: 18      
+gcc/test.c.001t.tu:@6767   identifier_node  strg: lineage_load_n_param    lngt: 20      
+gcc/test.c.001t.tu:@6815   identifier_node  strg: lineage_load_return     lngt: 19      
+gcc/test.c.001t.tu:@6864   identifier_node  strg: lineage_load_return_c   lngt: 21      
+gcc/test.c.001t.tu:@6917   identifier_node  strg: lineage_load_n_return   lngt: 21      
+gcc/test.c.001t.tu:@6975   identifier_node  strg: lineage_load_void_return 
+gcc/test.c.001t.tu:@7034   identifier_node  strg: lineage_save_return     lngt: 19      
+gcc/test.c.001t.tu:@7097   identifier_node  strg: lineage_save_return_c   lngt: 21      
+gcc/test.c.001t.tu:@7166   identifier_node  strg: lineage_save_n_return   lngt: 21      
+gcc/test.c.001t.tu:@7239   identifier_node  strg: lineage_get_id          lngt: 14      
+gcc/test.c.001t.tu:@7310   identifier_node  strg: lineage_init            lngt: 12      
+gcc/test.c.001t.tu:@7372   identifier_node  strg: lineage_fini            lngt: 12      
+gcc/test.c.001t.tu:@7430   identifier_node  strg: lineage_binop_misc      lngt: 18      
+gcc/test.c.001t.tu:@7487   identifier_node  strg: lineage_binop_misc_c    lngt: 20      
+gcc/test.c.001t.tu:@7545   identifier_node  strg: lineage_binop_plus      lngt: 18      
+gcc/test.c.001t.tu:@7601   identifier_node  strg: lineage_binop_minus     lngt: 19      
+gcc/test.c.001t.tu:@7665   identifier_node  strg: lineage_binop_mult      lngt: 18      
+gcc/test.c.001t.tu:@7737   identifier_node  strg: lineage_binop_rdiv      lngt: 18      
+gcc/test.c.001t.tu:@7809   identifier_node  strg: lineage_binop_plus_f    lngt: 20      
+gcc/test.c.001t.tu:@7887   identifier_node  strg: lineage_binop_minus_f   lngt: 21      
+gcc/test.c.001t.tu:@7960   identifier_node  strg: lineage_binop_mult_f    lngt: 20      
+gcc/test.c.001t.tu:@8024   identifier_node  strg: lineage_binop_rdiv_f    lngt: 20      
+gcc/test.c.001t.tu:@8075   identifier_node  strg: lineage_binop_plus_c    lngt: 20      
+gcc/test.c.001t.tu:@8158   identifier_node  strg: lineage_binop_minus_c   lngt: 21      
+gcc/test.c.001t.tu:@8229   identifier_node  strg: lineage_binop_mult_c    lngt: 20      
+gcc/test.c.001t.tu:@8297   identifier_node  strg: lineage_binop_rdiv_c    lngt: 20      
+gcc/test.c.001t.tu:@8360   identifier_node  strg: lineage_binop_double    lngt: 20      
+gcc/test.c.001t.tu:@8418   identifier_node  strg: lineage_binop_complex   lngt: 21      
+gcc/test.c.001t.tu:@8487   identifier_node  strg: lineage_binop_float     lngt: 19      
+gcc/test.c.001t.tu:@8549   identifier_node  strg: lineage_binop_int       lngt: 17      
+gcc/test.c.001t.tu:@8615   identifier_node  strg: lineage_binop_int64     lngt: 19      
+gcc/test.c.001t.tu:@8664   identifier_node  strg: lineage_binop_bool      lngt: 18      
+gcc/test.c.001t.tu:@8712   identifier_node  strg: lineage_binop_bool_f    lngt: 20      
+gcc/test.c.001t.tu:@8762   identifier_node  strg: lineage_binop_fast_check 
+gcc/test.c.001t.tu:@8810   identifier_node  strg: lineage_binop_fast_check_with_shadows 
+gcc/test.c.001t.tu:@8855   identifier_node  strg: lineage_binop_fast_check_plus 
+gcc/test.c.001t.tu:@8902   identifier_node  strg: lineage_binop_fast_check_minus 
+gcc/test.c.001t.tu:@8948   identifier_node  strg: lineage_binop_fast_check_plus_f 
+gcc/test.c.001t.tu:@8995   identifier_node  strg: lineage_binop_fast_check_minus_f 
+gcc/test.c.001t.tu:@9046   identifier_node  strg: lineage_binop_fast_check_f 
+gcc/test.c.001t.tu:@9102   identifier_node  strg: lineage_union           lngt: 13      
+gcc/test.c.001t.tu:@9164   identifier_node  strg: lineage_binop_fast_check_predicate 
+gcc/test.c.001t.tu:@9207   identifier_node  strg: lineage_predicate       lngt: 17      
+gcc/test.c.001t.tu:@9250   identifier_node  strg: lineage_predicate_f     lngt: 19      
+gcc/test.c.001t.tu:@9291   identifier_node  strg: lineage_ckp_d           lngt: 13      
+gcc/test.c.001t.tu:@9333   identifier_node  strg: lineage_ckp_i           lngt: 13      
+gcc/test.c.001t.tu:@9374   identifier_node  strg: lineage_ckp_b           lngt: 13      
+gcc/test.c.001t.tu:@9419   identifier_node  strg: lineage_p               lngt: 9       
+gcc/test.c.001t.tu:@9459   identifier_node  strg: lineage_p_char          lngt: 14      
+gcc/test.c.001t.tu:@9496   identifier_node  strg: lineage_p_float         lngt: 15      
+gcc/test.c.001t.tu:@9533   identifier_node  strg: lineage_p_double        lngt: 16      
+gcc/test.c.001t.tu:@9570   identifier_node  strg: lineage_p_entry         lngt: 15      
+gcc/test.c.001t.tu:@9606   identifier_node  strg: lineage_p_exit          lngt: 14      
+gcc/test.c.001t.tu:@9647   identifier_node  strg: lineage_matmul          lngt: 14      
+gcc/test.c.001t.tu:@9685   identifier_node  strg: lineage_sin             lngt: 11      
+gcc/test.c.001t.tu:@9724   identifier_node  strg: lineage_cos             lngt: 11      
+gcc/test.c.001t.tu:@9755   identifier_node  strg: lineage_atan            lngt: 12      
+gcc/test.c.001t.tu:@9790   identifier_node  strg: lineage_atan2           lngt: 13      
+gcc/test.c.001t.tu:@9827   identifier_node  strg: lineage_fmod            lngt: 12      
+gcc/test.c.001t.tu:@9863   identifier_node  strg: lineage_pow             lngt: 11      
+gcc/test.c.001t.tu:@9888   identifier_node  strg: lineage_powi            lngt: 12      
+gcc/test.c.001t.tu:@9914   identifier_node  strg: lineage_acos            lngt: 12      
+gcc/test.c.001t.tu:@9944   identifier_node  strg: lineage_sqrt            lngt: 12      
+gcc/test.c.001t.tu:@9981   identifier_node  strg: lineage_log             lngt: 11      
+gcc/test.c.001t.tu:@10013  identifier_node  strg: lineage_reset           lngt: 13      
+gcc/test.c.001t.tu:@10046  identifier_node  strg: lineage_cabs            lngt: 12      
+gcc/test.c.001t.tu:@10078  identifier_node  strg: lineage_trunc           lngt: 13      
+gcc/test.c.001t.tu:@10117  identifier_node  strg: lineage_exp             lngt: 11      
+gcc/test.c.001t.tu:@10156  identifier_node  strg: lineage_copysign        lngt: 16      
+gcc/test.c.001t.tu:@10191  identifier_node  strg: lineage_sign            lngt: 12      
+gcc/test.c.001t.tu:@10225  identifier_node  strg: lineage_register_main   lngt: 21      
+gcc/test.c.001t.tu:@10253  identifier_node  strg: lineage_debug_fname     lngt: 19      
+gcc/test.c.001t.tu:@10282  identifier_node  strg: lineage_fread           lngt: 13      
+gcc/test.c.001t.tu:@10320  identifier_node  strg: lineage_write           lngt: 13      
+gcc/test.c.001t.tu:@10355  identifier_node  strg: lineage_print_value     lngt: 19      
+gcc/test.c.001t.tu:@10386  identifier_node  strg: lineage_spawn           lngt: 13      
+gcc/test.c.004t.gimple:  gimple_call <lineage_init, NULL>
+gcc/test.c.004t.gimple:  gimple_call <lineage_fini, NULL>
+gcc/test.c.008t.prelineage:  gimple_call <lineage_init, NULL>
+gcc/test.c.008t.prelineage:  gimple_call <lineage_fini, NULL>
+gcc/test.c.009t.lineagefp:        gimple_call <lineage_spawn, __rtn_v1.10, __rtn_v1.10, __rtn_v2.11, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.009t.lineagefp:        gimple_call <lineage_spawn, __rtn_v1.23, __rtn_v1.23, __rtn_v2.24, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.009t.lineagefp:  gimple_call <lineage_init, NULL>
+gcc/test.c.009t.lineagefp:  gimple_call <lineage_fini, NULL>
+gcc/test.c.010t.lineage:        gimple_call <lineage_spawn, __rtn_v1.10, __rtn_v1.10, __rtn_v2.11, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.010t.lineage:        gimple_call <lineage_spawn, __rtn_v1.23, __rtn_v1.23, __rtn_v2.24, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.010t.lineage:  gimple_call <lineage_init, NULL>
+gcc/test.c.010t.lineage:  gimple_call <lineage_fini, NULL>
+gcc/test.c.012t.omplower:        gimple_call <lineage_spawn, __rtn_v1.10, __rtn_v1.10, __rtn_v2.11, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.012t.omplower:        gimple_call <lineage_spawn, __rtn_v1.23, __rtn_v1.23, __rtn_v2.24, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.012t.omplower:  gimple_call <lineage_init, NULL>
+gcc/test.c.012t.omplower:  gimple_call <lineage_fini, NULL>
+gcc/test.c.013t.lower:      gimple_call <lineage_spawn, __rtn_v1.10, __rtn_v1.10, __rtn_v2.11, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.013t.lower:      gimple_call <lineage_spawn, __rtn_v1.23, __rtn_v1.23, __rtn_v2.24, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.013t.lower:  gimple_call <lineage_init, NULL>
+gcc/test.c.013t.lower:  gimple_call <lineage_fini, NULL>
+gcc/test.c.016t.eh:  gimple_call <lineage_spawn, __rtn_v1.10, __rtn_v1.10, __rtn_v2.11, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.016t.eh:  gimple_call <lineage_spawn, __rtn_v1.23, __rtn_v1.23, __rtn_v2.24, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.016t.eh:  gimple_call <lineage_init, NULL>
+gcc/test.c.016t.eh:  gimple_call <lineage_fini, NULL>
+gcc/test.c.017t.cfg:  gimple_call <lineage_spawn, __rtn_v1.10, __rtn_v1.10, __rtn_v2.11, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.017t.cfg:  gimple_call <lineage_spawn, __rtn_v1.23, __rtn_v1.23, __rtn_v2.24, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.017t.cfg:  gimple_call <lineage_init, NULL>
+gcc/test.c.017t.cfg:  gimple_call <lineage_fini, NULL>
+gcc/test.c.021t.ssa:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.021t.ssa:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.021t.ssa:  gimple_call <lineage_init, NULL>
+gcc/test.c.021t.ssa:  gimple_call <lineage_fini, NULL>
+gcc/test.c.023t.inline_param1:    lineage_spawn/813 function body not available
+gcc/test.c.023t.inline_param1:    lineage_spawn/813 function body not available
+gcc/test.c.023t.inline_param1:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.023t.inline_param1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.023t.inline_param1:  gimple_call <lineage_init, NULL>
+gcc/test.c.023t.inline_param1:  gimple_call <lineage_fini, NULL>
+gcc/test.c.024t.einline:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.024t.einline:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.024t.einline:  gimple_call <lineage_init, NULL>
+gcc/test.c.024t.einline:  gimple_call <lineage_fini, NULL>
+gcc/test.c.025t.early_optimizations:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.025t.early_optimizations:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.025t.early_optimizations:  gimple_call <lineage_init, NULL>
+gcc/test.c.025t.early_optimizations:  gimple_call <lineage_fini, NULL>
+gcc/test.c.026t.copyrename1:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.026t.copyrename1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.026t.copyrename1:  gimple_call <lineage_init, NULL>
+gcc/test.c.026t.copyrename1:  gimple_call <lineage_fini, NULL>
+gcc/test.c.027t.ccp1:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.027t.ccp1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.027t.ccp1:  gimple_call <lineage_init, NULL>
+gcc/test.c.027t.ccp1:  gimple_call <lineage_fini, NULL>
+gcc/test.c.028t.forwprop1:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.028t.forwprop1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.028t.forwprop1:  gimple_call <lineage_init, NULL>
+gcc/test.c.028t.forwprop1:  gimple_call <lineage_fini, NULL>
+gcc/test.c.029t.ealias:lineage_spawn = { }
+gcc/test.c.029t.ealias:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.029t.ealias:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.029t.ealias:lineage_init = { }
+gcc/test.c.029t.ealias:  gimple_call <lineage_init, NULL>
+gcc/test.c.029t.ealias:lineage_fini = { }
+gcc/test.c.029t.ealias:  gimple_call <lineage_fini, NULL>
+gcc/test.c.030t.esra:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.030t.esra:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.030t.esra:  gimple_call <lineage_init, NULL>
+gcc/test.c.030t.esra:  gimple_call <lineage_fini, NULL>
+gcc/test.c.031t.fre1:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.031t.fre1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.031t.fre1:  gimple_call <lineage_init, NULL>
+gcc/test.c.031t.fre1:  gimple_call <lineage_fini, NULL>
+gcc/test.c.032t.copyprop1:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.032t.copyprop1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.032t.copyprop1:  gimple_call <lineage_init, NULL>
+gcc/test.c.032t.copyprop1:  gimple_call <lineage_fini, NULL>
+gcc/test.c.033t.mergephi1:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.033t.mergephi1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.033t.mergephi1:  gimple_call <lineage_init, NULL>
+gcc/test.c.033t.mergephi1:  gimple_call <lineage_fini, NULL>
+gcc/test.c.034t.cddce1:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.034t.cddce1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.034t.cddce1:  gimple_call <lineage_init, NULL>
+gcc/test.c.034t.cddce1:  gimple_call <lineage_fini, NULL>
+gcc/test.c.035t.eipa_sra:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.035t.eipa_sra:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.035t.eipa_sra:  gimple_call <lineage_init, NULL>
+gcc/test.c.035t.eipa_sra:  gimple_call <lineage_fini, NULL>
+gcc/test.c.036t.tailr1:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.036t.tailr1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.036t.tailr1:  gimple_call <lineage_init, NULL>
+gcc/test.c.036t.tailr1:  gimple_call <lineage_fini, NULL>
+gcc/test.c.037t.switchconv:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.037t.switchconv:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.037t.switchconv:  gimple_call <lineage_init, NULL>
+gcc/test.c.037t.switchconv:  gimple_call <lineage_fini, NULL>
+gcc/test.c.039t.profile_estimate:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.039t.profile_estimate:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.039t.profile_estimate:  gimple_call <lineage_init, NULL>
+gcc/test.c.039t.profile_estimate:  gimple_call <lineage_fini, NULL>
+gcc/test.c.040t.local-pure-const1:  scanning: __rtn_v1.10_36 = lineage_spawn (__rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1");
+gcc/test.c.040t.local-pure-const1:  scanning: __rtn_v1.23_55 = lineage_spawn (__rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1");
+gcc/test.c.040t.local-pure-const1:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.040t.local-pure-const1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.040t.local-pure-const1:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.040t.local-pure-const1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.040t.local-pure-const1:  gimple_call <lineage_init, NULL>
+gcc/test.c.040t.local-pure-const1:  gimple_call <lineage_fini, NULL>
+gcc/test.c.041t.fnsplit:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.041t.fnsplit:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.041t.fnsplit:  gimple_call <lineage_init, NULL>
+gcc/test.c.041t.fnsplit:  gimple_call <lineage_fini, NULL>
+gcc/test.c.042t.release_ssa:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.042t.release_ssa:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.042t.release_ssa:  gimple_call <lineage_init, NULL>
+gcc/test.c.042t.release_ssa:  gimple_call <lineage_fini, NULL>
+gcc/test.c.043t.inline_param2:    lineage_spawn/813 function body not available
+gcc/test.c.043t.inline_param2:    lineage_spawn/813 function body not available
+gcc/test.c.043t.inline_param2:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.043t.inline_param2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.043t.inline_param2:  gimple_call <lineage_init, NULL>
+gcc/test.c.043t.inline_param2:  gimple_call <lineage_fini, NULL>
+gcc/test.c.061t.copyrename2:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.061t.copyrename2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.061t.copyrename2:  gimple_call <lineage_init, NULL>
+gcc/test.c.061t.copyrename2:  gimple_call <lineage_fini, NULL>
+gcc/test.c.062t.cunrolli:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.062t.cunrolli:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.062t.cunrolli:  gimple_call <lineage_init, NULL>
+gcc/test.c.062t.cunrolli:  gimple_call <lineage_fini, NULL>
+gcc/test.c.063t.ccp2:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.063t.ccp2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.063t.ccp2:  gimple_call <lineage_init, NULL>
+gcc/test.c.063t.ccp2:  gimple_call <lineage_fini, NULL>
+gcc/test.c.064t.forwprop2:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.064t.forwprop2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.064t.forwprop2:  gimple_call <lineage_init, NULL>
+gcc/test.c.064t.forwprop2:  gimple_call <lineage_fini, NULL>
+gcc/test.c.065t.cdce:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.065t.cdce:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.065t.cdce:  gimple_call <lineage_init, NULL>
+gcc/test.c.065t.cdce:  gimple_call <lineage_fini, NULL>
+gcc/test.c.066t.alias:lineage_spawn = { }
+gcc/test.c.066t.alias:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.066t.alias:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.066t.alias:lineage_init = { }
+gcc/test.c.066t.alias:  gimple_call <lineage_init, NULL>
+gcc/test.c.066t.alias:lineage_fini = { }
+gcc/test.c.066t.alias:  gimple_call <lineage_fini, NULL>
+gcc/test.c.067t.retslot:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.067t.retslot:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.067t.retslot:  gimple_call <lineage_init, NULL>
+gcc/test.c.067t.retslot:  gimple_call <lineage_fini, NULL>
+gcc/test.c.068t.phiprop:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.068t.phiprop:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.068t.phiprop:  gimple_call <lineage_init, NULL>
+gcc/test.c.068t.phiprop:  gimple_call <lineage_fini, NULL>
+gcc/test.c.069t.fre2:  gimple_call <lineage_spawn, __rtn_v1.10_36, __rtn_v1.10_32, __rtn_v2.11_34, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.069t.fre2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.069t.fre2:  gimple_call <lineage_init, NULL>
+gcc/test.c.069t.fre2:  gimple_call <lineage_fini, NULL>
+gcc/test.c.070t.copyprop2:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.070t.copyprop2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.070t.copyprop2:  gimple_call <lineage_init, NULL>
+gcc/test.c.070t.copyprop2:  gimple_call <lineage_fini, NULL>
+gcc/test.c.071t.mergephi2:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.071t.mergephi2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.071t.mergephi2:  gimple_call <lineage_init, NULL>
+gcc/test.c.071t.mergephi2:  gimple_call <lineage_fini, NULL>
+gcc/test.c.072t.vrp1:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.072t.vrp1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.072t.vrp1:  gimple_call <lineage_init, NULL>
+gcc/test.c.072t.vrp1:  gimple_call <lineage_fini, NULL>
+gcc/test.c.073t.dce1:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.073t.dce1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.073t.dce1:  gimple_call <lineage_init, NULL>
+gcc/test.c.073t.dce1:  gimple_call <lineage_fini, NULL>
+gcc/test.c.074t.cselim:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.074t.cselim:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.074t.cselim:  gimple_call <lineage_init, NULL>
+gcc/test.c.074t.cselim:  gimple_call <lineage_fini, NULL>
+gcc/test.c.075t.ifcombine:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.075t.ifcombine:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.075t.ifcombine:  gimple_call <lineage_init, NULL>
+gcc/test.c.075t.ifcombine:  gimple_call <lineage_fini, NULL>
+gcc/test.c.076t.phiopt1:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.076t.phiopt1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.076t.phiopt1:  gimple_call <lineage_init, NULL>
+gcc/test.c.076t.phiopt1:  gimple_call <lineage_fini, NULL>
+gcc/test.c.077t.tailr2:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.077t.tailr2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.077t.tailr2:  gimple_call <lineage_init, NULL>
+gcc/test.c.077t.tailr2:  gimple_call <lineage_fini, NULL>
+gcc/test.c.078t.ch:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.078t.ch:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.078t.ch:  gimple_call <lineage_init, NULL>
+gcc/test.c.078t.ch:  gimple_call <lineage_fini, NULL>
+gcc/test.c.080t.cplxlower:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.080t.cplxlower:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.080t.cplxlower:  gimple_call <lineage_init, NULL>
+gcc/test.c.080t.cplxlower:  gimple_call <lineage_fini, NULL>
+gcc/test.c.081t.sra:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.081t.sra:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.081t.sra:  gimple_call <lineage_init, NULL>
+gcc/test.c.081t.sra:  gimple_call <lineage_fini, NULL>
+gcc/test.c.082t.copyrename3:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.082t.copyrename3:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.082t.copyrename3:  gimple_call <lineage_init, NULL>
+gcc/test.c.082t.copyrename3:  gimple_call <lineage_fini, NULL>
+gcc/test.c.083t.dom1:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.083t.dom1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.083t.dom1:  gimple_call <lineage_init, NULL>
+gcc/test.c.083t.dom1:  gimple_call <lineage_fini, NULL>
+gcc/test.c.084t.phicprop1:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.084t.phicprop1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.084t.phicprop1:  gimple_call <lineage_init, NULL>
+gcc/test.c.084t.phicprop1:  gimple_call <lineage_fini, NULL>
+gcc/test.c.085t.dse1:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.085t.dse1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.085t.dse1:  gimple_call <lineage_init, NULL>
+gcc/test.c.085t.dse1:  gimple_call <lineage_fini, NULL>
+gcc/test.c.086t.reassoc1:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.086t.reassoc1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.086t.reassoc1:  gimple_call <lineage_init, NULL>
+gcc/test.c.086t.reassoc1:  gimple_call <lineage_fini, NULL>
+gcc/test.c.087t.dce2:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.087t.dce2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.087t.dce2:  gimple_call <lineage_init, NULL>
+gcc/test.c.087t.dce2:  gimple_call <lineage_fini, NULL>
+gcc/test.c.088t.forwprop3:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.088t.forwprop3:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.088t.forwprop3:  gimple_call <lineage_init, NULL>
+gcc/test.c.088t.forwprop3:  gimple_call <lineage_fini, NULL>
+gcc/test.c.089t.phiopt2:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.089t.phiopt2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.089t.phiopt2:  gimple_call <lineage_init, NULL>
+gcc/test.c.089t.phiopt2:  gimple_call <lineage_fini, NULL>
+gcc/test.c.090t.objsz:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.090t.objsz:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.090t.objsz:  gimple_call <lineage_init, NULL>
+gcc/test.c.090t.objsz:  gimple_call <lineage_fini, NULL>
+gcc/test.c.091t.strlen:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.091t.strlen:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.091t.strlen:  gimple_call <lineage_init, NULL>
+gcc/test.c.091t.strlen:  gimple_call <lineage_fini, NULL>
+gcc/test.c.092t.ccp3:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.092t.ccp3:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.092t.ccp3:  gimple_call <lineage_init, NULL>
+gcc/test.c.092t.ccp3:  gimple_call <lineage_fini, NULL>
+gcc/test.c.093t.copyprop3:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.093t.copyprop3:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.093t.copyprop3:  gimple_call <lineage_init, NULL>
+gcc/test.c.093t.copyprop3:  gimple_call <lineage_fini, NULL>
+gcc/test.c.094t.sincos:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.094t.sincos:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.094t.sincos:  gimple_call <lineage_init, NULL>
+gcc/test.c.094t.sincos:  gimple_call <lineage_fini, NULL>
+gcc/test.c.095t.bswap:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.095t.bswap:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.095t.bswap:  gimple_call <lineage_init, NULL>
+gcc/test.c.095t.bswap:  gimple_call <lineage_fini, NULL>
+gcc/test.c.096t.crited:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.096t.crited:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.096t.crited:  gimple_call <lineage_init, NULL>
+gcc/test.c.096t.crited:  gimple_call <lineage_fini, NULL>
+gcc/test.c.097t.pre:lineage_spawn = { }
+gcc/test.c.097t.pre:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.097t.pre:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.097t.pre:lineage_init = { }
+gcc/test.c.097t.pre:  gimple_call <lineage_init, NULL>
+gcc/test.c.097t.pre:lineage_fini = { }
+gcc/test.c.097t.pre:  gimple_call <lineage_fini, NULL>
+gcc/test.c.098t.sink:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.098t.sink:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.098t.sink:  gimple_call <lineage_init, NULL>
+gcc/test.c.098t.sink:  gimple_call <lineage_fini, NULL>
+gcc/test.c.099t.loop:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.099t.loop:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.099t.loop:  gimple_call <lineage_init, NULL>
+gcc/test.c.099t.loop:  gimple_call <lineage_fini, NULL>
+gcc/test.c.100t.loopinit:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.100t.loopinit:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.100t.loopinit:  gimple_call <lineage_init, NULL>
+gcc/test.c.100t.loopinit:  gimple_call <lineage_fini, NULL>
+gcc/test.c.101t.lim1:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.101t.lim1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.101t.lim1:  gimple_call <lineage_init, NULL>
+gcc/test.c.101t.lim1:  gimple_call <lineage_fini, NULL>
+gcc/test.c.102t.copyprop4:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.102t.copyprop4:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.102t.copyprop4:  gimple_call <lineage_init, NULL>
+gcc/test.c.102t.copyprop4:  gimple_call <lineage_fini, NULL>
+gcc/test.c.103t.dceloop1:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.103t.dceloop1:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.103t.dceloop1:  gimple_call <lineage_init, NULL>
+gcc/test.c.103t.dceloop1:  gimple_call <lineage_fini, NULL>
+gcc/test.c.104t.unswitch:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.104t.unswitch:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.104t.unswitch:  gimple_call <lineage_init, NULL>
+gcc/test.c.104t.unswitch:  gimple_call <lineage_fini, NULL>
+gcc/test.c.105t.sccp:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.105t.sccp:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.105t.sccp:  gimple_call <lineage_init, NULL>
+gcc/test.c.105t.sccp:  gimple_call <lineage_fini, NULL>
+gcc/test.c.107t.ldist:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.107t.ldist:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.107t.ldist:  gimple_call <lineage_init, NULL>
+gcc/test.c.107t.ldist:  gimple_call <lineage_fini, NULL>
+gcc/test.c.108t.copyprop5:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.108t.copyprop5:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.108t.copyprop5:  gimple_call <lineage_init, NULL>
+gcc/test.c.108t.copyprop5:  gimple_call <lineage_fini, NULL>
+gcc/test.c.114t.ivcanon:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.114t.ivcanon:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.114t.ivcanon:  gimple_call <lineage_init, NULL>
+gcc/test.c.114t.ivcanon:  gimple_call <lineage_fini, NULL>
+gcc/test.c.115t.ifcvt:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.115t.ifcvt:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.115t.ifcvt:  gimple_call <lineage_init, NULL>
+gcc/test.c.115t.ifcvt:  gimple_call <lineage_fini, NULL>
+gcc/test.c.116t.vect:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.116t.vect:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.116t.vect:  gimple_call <lineage_init, NULL>
+gcc/test.c.116t.vect:  gimple_call <lineage_fini, NULL>
+gcc/test.c.117t.dceloop3:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.117t.dceloop3:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.117t.dceloop3:  gimple_call <lineage_init, NULL>
+gcc/test.c.117t.dceloop3:  gimple_call <lineage_fini, NULL>
+gcc/test.c.118t.pcom:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.118t.pcom:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.118t.pcom:  gimple_call <lineage_init, NULL>
+gcc/test.c.118t.pcom:  gimple_call <lineage_fini, NULL>
+gcc/test.c.119t.cunroll:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.119t.cunroll:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.119t.cunroll:  gimple_call <lineage_init, NULL>
+gcc/test.c.119t.cunroll:  gimple_call <lineage_fini, NULL>
+gcc/test.c.120t.slp:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.120t.slp:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.120t.slp:  gimple_call <lineage_init, NULL>
+gcc/test.c.120t.slp:  gimple_call <lineage_fini, NULL>
+gcc/test.c.123t.ivopts:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.123t.ivopts:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.123t.ivopts:  gimple_call <lineage_init, NULL>
+gcc/test.c.123t.ivopts:  gimple_call <lineage_fini, NULL>
+gcc/test.c.124t.lim3:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.124t.lim3:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.124t.lim3:  gimple_call <lineage_init, NULL>
+gcc/test.c.124t.lim3:  gimple_call <lineage_fini, NULL>
+gcc/test.c.125t.loopdone:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.125t.loopdone:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.125t.loopdone:  gimple_call <lineage_init, NULL>
+gcc/test.c.125t.loopdone:  gimple_call <lineage_fini, NULL>
+gcc/test.c.126t.veclower2:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.126t.veclower2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.126t.veclower2:  gimple_call <lineage_init, NULL>
+gcc/test.c.126t.veclower2:  gimple_call <lineage_fini, NULL>
+gcc/test.c.128t.reassoc2:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.128t.reassoc2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.128t.reassoc2:  gimple_call <lineage_init, NULL>
+gcc/test.c.128t.reassoc2:  gimple_call <lineage_fini, NULL>
+gcc/test.c.129t.vrp2:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.129t.vrp2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.129t.vrp2:  gimple_call <lineage_init, NULL>
+gcc/test.c.129t.vrp2:  gimple_call <lineage_fini, NULL>
+gcc/test.c.130t.dom2:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.130t.dom2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.130t.dom2:  gimple_call <lineage_init, NULL>
+gcc/test.c.130t.dom2:  gimple_call <lineage_fini, NULL>
+gcc/test.c.131t.phicprop2:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.131t.phicprop2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.131t.phicprop2:  gimple_call <lineage_init, NULL>
+gcc/test.c.131t.phicprop2:  gimple_call <lineage_fini, NULL>
+gcc/test.c.132t.cddce2:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.132t.cddce2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.132t.cddce2:  gimple_call <lineage_init, NULL>
+gcc/test.c.132t.cddce2:  gimple_call <lineage_fini, NULL>
+gcc/test.c.135t.dse2:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.135t.dse2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.135t.dse2:  gimple_call <lineage_init, NULL>
+gcc/test.c.135t.dse2:  gimple_call <lineage_fini, NULL>
+gcc/test.c.136t.forwprop4:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.136t.forwprop4:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.136t.forwprop4:  gimple_call <lineage_init, NULL>
+gcc/test.c.136t.forwprop4:  gimple_call <lineage_fini, NULL>
+gcc/test.c.137t.phiopt3:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.137t.phiopt3:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.137t.phiopt3:  gimple_call <lineage_init, NULL>
+gcc/test.c.137t.phiopt3:  gimple_call <lineage_fini, NULL>
+gcc/test.c.138t.fab:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.138t.fab:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.138t.fab:  gimple_call <lineage_init, NULL>
+gcc/test.c.138t.fab:  gimple_call <lineage_fini, NULL>
+gcc/test.c.139t.widening_mul:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.139t.widening_mul:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.139t.widening_mul:  gimple_call <lineage_init, NULL>
+gcc/test.c.139t.widening_mul:  gimple_call <lineage_fini, NULL>
+gcc/test.c.140t.tailc:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.140t.tailc:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.140t.tailc:  gimple_call <lineage_init, NULL> [tail call]
+gcc/test.c.140t.tailc:  gimple_call <lineage_fini, NULL> [tail call]
+gcc/test.c.141t.copyrename4:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.141t.copyrename4:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.141t.copyrename4:  gimple_call <lineage_init, NULL> [tail call]
+gcc/test.c.141t.copyrename4:  gimple_call <lineage_fini, NULL> [tail call]
+gcc/test.c.142t.uncprop:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.142t.uncprop:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.142t.uncprop:  gimple_call <lineage_init, NULL> [tail call]
+gcc/test.c.142t.uncprop:  gimple_call <lineage_fini, NULL> [tail call]
+gcc/test.c.143t.local-pure-const2:  scanning: __rtn_v1.10_36 = lineage_spawn (0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1");
+gcc/test.c.143t.local-pure-const2:  scanning: __rtn_v1.23_55 = lineage_spawn (__rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1");
+gcc/test.c.143t.local-pure-const2:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.143t.local-pure-const2:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.143t.local-pure-const2:   scanning: lineage_init (); [tail call]
+gcc/test.c.143t.local-pure-const2:  gimple_call <lineage_init, NULL> [tail call]
+gcc/test.c.143t.local-pure-const2:  gimple_call <lineage_init, NULL> [tail call]
+gcc/test.c.143t.local-pure-const2:   scanning: lineage_fini (); [tail call]
+gcc/test.c.143t.local-pure-const2:  gimple_call <lineage_fini, NULL> [tail call]
+gcc/test.c.143t.local-pure-const2:  gimple_call <lineage_fini, NULL> [tail call]
+gcc/test.c.150t.nrv:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.150t.nrv:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.150t.nrv:  gimple_call <lineage_init, NULL> [tail call]
+gcc/test.c.150t.nrv:  gimple_call <lineage_fini, NULL> [tail call]
+gcc/test.c.152t.optimized:  gimple_call <lineage_spawn, __rtn_v1.10_36, 0, 1, &res.5, &c.9, "../../../test/test1/test.c:36:5 res.1">
+gcc/test.c.152t.optimized:  gimple_call <lineage_spawn, __rtn_v1.23_55, __rtn_v1.23_51, __rtn_v2.24_53, &res.18, &a.22, "../../../test/test1/test.c:36:14 res.1">
+gcc/test.c.152t.optimized:  gimple_call <lineage_init, NULL> [tail call]
+gcc/test.c.152t.optimized:  gimple_call <lineage_fini, NULL> [tail call]
+gcc/toplev.c:#include "lineage.h"
+gcc/toplev.c:      if (flag_lineage)
+gcc/toplev.c:        lineage_finish_file ();
+gcc/tree-pass.h:extern struct gimple_opt_pass pass_pre_lineage;
+gcc/tree-pass.h:extern struct gimple_opt_pass pass_lineage_fp;
+gcc/tree-pass.h:extern struct gimple_opt_pass pass_lineage;
+gcc/tree-pass.h:extern struct gimple_opt_pass pass_cd_lineage;
