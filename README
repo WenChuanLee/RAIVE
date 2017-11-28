@@ -1,5 +1,7 @@
 This is an implementation of RAIVE, a floating point stability checker.
 
+For the implementation details, please refer to gcc/lineage*.c
+
 For more information, please refer to the paper of OOPSLA '15
 
 RAIVE: Runtime Assessment of Floating-Point Instability by Vectorization.
